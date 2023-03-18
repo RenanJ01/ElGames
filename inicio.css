@@ -23,6 +23,7 @@ header nav{
     position: fixed;
     top: 0;
     overflow: hidden;
+    z-index: 10;
 }
 
 header nav ul{
@@ -69,6 +70,7 @@ header nav ul li a:hover:not(.active):not(.logoA){
   max-width: 1000px;
   position: relative;
   margin: auto;
+  z-index: 9;
 }
 
 /* Imagens Ocultadas */
@@ -158,7 +160,7 @@ footer {
 .main_footer .content {
     float: left;
     width: 90%;
-    margin: 0 5%;
+    margin: 0 10px;
     padding: 10px 0;
 }
 .container {
