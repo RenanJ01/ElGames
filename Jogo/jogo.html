@@ -9,6 +9,14 @@
         <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>El Games</title>
+        <script>
+            function ShowDonwl() {
+              var x = document.getElementById("scb_donwl");
+              x.className = "show";
+              x.innerText = "O Donwload foi efeituado.";
+              setTimeout(function(){x.className = x.className.replace("show", "");}, 3000);
+            }
+        </script>
     </head>
     <body>
 
@@ -17,16 +25,15 @@
 
             <!-- Cabeçalho - Barra de Navegação -->
             <nav>
-                <div>
-                    <a class="logoBarra" href="#">
-                        <img src="\ElGames/Imagens/ElGames_logo2.png" alt="ElGames" height="30"></a>
-                </div>
                 <ul>
+                    <div>
+                        <a class="logoBarra" href="\ElGames/Inicio.html"><img src="\ElGames/Imagens/ElGames_logo2.png" alt="ElGames" height="30"></a>
+                    </div>
                     <li><a href="\ElGames/Inicio.html" target="_self">Inicio</a></li>
                     <li><a class="active" href="#" target="_self">Jogo</a></li>
                     <li><a href="\ElGames/Desenvolvimento/desen.html" target="_self">Desenvolvimento</a></li>
                     <li><a href="\ElGames/Membros/membros.html" target="_self">Membros</a></li>
-                    <li><a href="\ElGames/Imagens/jogofake.png" download="jogofake">Donwload</a></li>
+                    <li><a href="\ElGames/Imagens/jogofake.png" download="jogofake.png" onclick="ShowDonwl()">Donwload</a></li>
                 </ul>
             </nav>
         <br><br>
@@ -41,11 +48,15 @@
             <section>
                 <br><br><br>
             </section>
-
-            <section>
-
+            
+            <!-- Donwload -->
+            <section class="scn_donwload">                
+                <a href="\ElGames/Imagens/jogofake.png" download="jogofake.png"><button class="btn_donwl" onclick="ShowDonwl()"><i class="fa fa-download"></i>Donwload</button></a>
+                <div id="scb_donwl"></div>
             </section>
         </main>
+
+        <br><br><br>
 
         <!-- Rodapé da Pagina -->
         <footer class="main_footer container">
@@ -96,10 +107,8 @@
 
             <div class="main_footer_copy">
 
-                <p class="m-b-footer"> TP - Curriculos - 2022, todos os direitos
-                    reservados.</p>
-                <p class="by">Desenvolvido por: <a href="#" title="Jonatas
-                        Renan">Jonatas Renan</a></p>
+                <p class="m-b-footer"> TP - Curriculos - 2022, todos os direitos reservados.</p>
+                <p class="by">Desenvolvido por: <a href="#" title="Jonatas Renan">Jonatas Renan</a></p>
 
             </div>
 
