@@ -60,6 +60,10 @@ header nav ul li a:hover:not(.active):not(.logoA){
     padding-right: 10px;
 }
 
+/* Cabeçalho - Imagem */
+.hdr_img{
+    width: 100%;
+}
 
 section{
     width: 100%;

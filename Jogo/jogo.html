@@ -10,10 +10,10 @@
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>El Games</title>
         <script>
-            function ShowDonwl() {
-              var x = document.getElementById("scb_donwl");
+            function ShowDownl() {
+              var x = document.getElementById("scb_downl");
               x.className = "show";
-              x.innerText = "O Donwload foi efeituado.";
+              x.innerText = "O Download foi efeituado.";
               setTimeout(function(){x.className = x.className.replace("show", "");}, 3000);
             }
         </script>
@@ -33,27 +33,32 @@
                     <li><a class="active" href="#" target="_self">Jogo</a></li>
                     <li><a href="\ElGames/Desenvolvimento/desen.html" target="_self">Desenvolvimento</a></li>
                     <li><a href="\ElGames/Membros/membros.html" target="_self">Membros</a></li>
-                    <li><a href="\ElGames/Imagens/jogofake.png" download="jogofake.png" onclick="ShowDonwl()">Donwload</a></li>
+                    <li><a href="\ElGames/Imagens/jogofake.png" download="jogofake.png" onclick="ShowDownl()">Download</a></li>
                 </ul>
             </nav>
-        <br><br>
-        <div>
-            <img src="" alt="">
-        </div>
-    </header>
 
+            <div class="ctn_img">
+                <img class="hdr_img" src="jogo.png" alt="">
+            </div>
+        </header>
+        <br>
         <!-- Principal - Seções -->
         <main>
             <!-- Principal - Seção - ElGames -->
-            <section>
-                <br><br><br>
+            <section class="scn_title">
+                <h1>Nome do Jogo</h1>
+                <p>Baixe agora o 'Nome do Jogo' e se divirta.</p>
+                <br>
+                <!-- Download -->
+                <section class="scn_download">
+                    <img src="" heigth="100px" alt="Icone do Jogo">
+                    <br>
+                    <a href="\ElGames/Imagens/jogofake.png" download="jogofake.png"><button class="btn_downl" onclick="ShowDownl()"><i class="fa fa-download"></i>Download</button></a>
+                    <br>
+                    <div id="scb_downl"></div>
+                </section>
             </section>
-            
-            <!-- Donwload -->
-            <section class="scn_donwload">                
-                <a href="\ElGames/Imagens/jogofake.png" download="jogofake.png"><button class="btn_donwl" onclick="ShowDonwl()"><i class="fa fa-download"></i>Donwload</button></a>
-                <div id="scb_donwl"></div>
-            </section>
+                        
         </main>
 
         <br><br><br>

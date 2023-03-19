@@ -57,6 +57,7 @@ header nav ul li a:hover:not(.active):not(.logoA){
     background-color: #474747;
 }
 
+/* Cabeçalho */
 /*Logo da ElGames*/
 .logoBarra{
     float: left;
@@ -66,9 +67,34 @@ header nav ul li a:hover:not(.active):not(.logoA){
     padding-right: 10px;
 }
 
-/*  */
+/* Cabeçalho - Imagem */
+.hdr_img{
+    width: 100%;
+}
+
+/* Seções */
 section{
     width: 100%;
+}
+
+/* Seção - Membros - Titular */
+.scn_title{
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+.scn_title h1{
+    color: var(--e-global-color-6);
+    text-transform: capitalize;
+    font-size: xx-large;
+    font-weight: bold;
+    margin: 5px auto;
+}
+.scn_title p{  
+    color: var(--e-global-color-7);
+    text-transform: none;
+    font-size: medium;
+    margin: 3px auto;
 }
 
 /* Seção - Membros - Perfis */
