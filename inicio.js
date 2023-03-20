@@ -3,12 +3,10 @@
 let slideId = 1;
 mostrar_sld(slideId);
 
-// proximo/Anterior controles
+// Proximo/Anterior Controles
 function plusSlides(n) {
   mostrar_sld(slideId += n);
 }
-
-// Thumbnail image controls
 function currentSlide(n) {
   mostrar_sld(slideId = n);
 }

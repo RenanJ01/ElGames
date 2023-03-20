@@ -56,6 +56,13 @@ header nav ul li a:hover:not(.active):not(.logoA){
     background-color: #474747;
 }
 
+@media (max-width: 389px){
+
+    .div_img{
+        margin-top: 64px;
+    }
+}
+
 /*Logo da ElGames*/
 .logoBarra{
     float: left;
@@ -76,11 +83,12 @@ header nav ul li a:hover:not(.active):not(.logoA){
     width: 100%;
 }
 
-/* Seção */
+/* Principal - Seção */
 section{
     width: 100%;
 }
 
+/* Seção - Membros - Titular */
 .scn_title{
     width: 100%;
     margin: auto;
