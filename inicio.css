@@ -64,6 +64,13 @@ header nav ul li a:hover:not(.active):not(.logoA){
     padding-left: 10px;
     padding-right: 10px;
 }
+.img_avatar{
+    float: right;
+    padding: 0 4px;
+}
+.img_avatar img{
+    height: 38px;
+}
 
 /* Cabeçalho - Slider */
 .ctn_sld{
