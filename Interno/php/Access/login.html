@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="login.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" >
+    <title>Login</title>
+</head>
+
+<body>
+
+    <!-- Principal - Formulario -->
+    <!-- <main>
+    <form action="logando.php" method="post">
+        <fieldset class="fld_form">
+
+            <h1>Login</h1><br>
+
+            <label for="fuser">Username:</label><br>
+            <input type="text" id="fuser" name="fuser" required><br><br>
+            
+            <label for="fpass">Senha:</label><br>
+            <input type="password" id="fpass" name="fpass" required><br><br>
+
+            <input class="btn_action" type="submit" value="Entrar"><br>
+        </fieldset>
+    </form>
+    </main> -->
+
+    <div class="limiter">
+        <div class="ctn-login">
+            <div class="wrap-login">
+                <form class="login-form" action="logando.php" method="post">
+                    <span class="login-form-logo">
+                        <i class="">Imagem</i>
+                    </span>
+                    <br/>
+                    <span class="login-form-title">
+                        Entrar
+                    </span>
+                    <br>
+                    <div class="wrap-input validate-input" data-validate="Entre username">
+                        <input class="input" type="text" id="fuser" name="fuser" placeholder="Nome do Usuario" required>
+                        <span class="focus-input" data-placeholder="&#xf207;"></span>
+                    </div>
+                    <div class="wrap-input validate-input" data-validate="Entre password">
+                        <input class="input" type="password" id="fpass" name="fpass" placeholder="Senha" required>
+                        <span class="focus-input" data-placeholder="&#xf191;"></span>
+                    </div>
+                    <br/>
+                    <div class="ctn-login-form-btn">
+                        <button class="login-form-btn">
+                            Login
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
