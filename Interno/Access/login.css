@@ -4,6 +4,15 @@
     box-sizing: border-box;
 }
 
+* {
+    --e-global-color-1: #F22E52;
+    --e-global-color-2: #400324;
+    --e-global-color-3: #7141D9;
+    --e-global-color-4: #632075;
+    --e-global-color-5: #00010D;
+    --e-global-color-6: #F29F05;
+    --e-global-color-7: #fff;
+}
 body {
     font-family: 'Times New Roman', Times, serif;
     scroll-behavior: smooth;
@@ -17,58 +26,7 @@ body {
     background-color: #fff;
 }
 
-/*Principal - Sections*/
-/* main {
-    width: 100%;
-    margin: 0 auto;
-}
-
-form {
-    width: 100%;
-    padding: 0 10px;
-    text-align: center;
-}
-.fld_form{
-    border: none;  
-    vertical-align: middle;
-}
-
-.fld_form h1,
-.fld_form h2 {
-    color: #000;
-    margin: 0px 10px;
-}
-.fld_form label{
-    color: #000;
-    margin: 0px 10px;
-}
-
-#fuser,
-#fpass{
-    border: 1px solid #333;
-    border-radius: 3px;
-    background-color: #ddd;
-    padding: 2px 6px;
-}
-#fuser:focus-visible,
-#fpass:focus-visible{
-    outline: none;
-}
-
-.btn_action{
-    border: none;
-    border-radius: 3px;
-    background-color: #bbb;
-    padding: 8px 10px;
-    margin: 0 10px;
-    transition: background-color, padding, color;
-    transition-duration: 1s, 1s, 1s;
-}
-.btn_action:hover{
-    background-color: #333;
-    padding: 7px 8px;
-    color: #fff;
-} */
+/*Principal - Form*/
 
 .limiter{
     width: 100%;
@@ -102,7 +60,7 @@ form {
     height: 100%;
     top: 0;
     left: 0;
-    background-color: #ffffffe6;
+    background-color: var(--e-global-color-5);
 }
 .wrap-login{
     width: 35%;
@@ -111,8 +69,6 @@ form {
     padding: 55px 55px 37px;
     background: #9152f8;
     background: -webkit-linear-gradient(top,#7579ff,#b224ef);
-    background: -o-linear-gradient(top,#7579ff,#b224ef);
-    background: -moz-linear-gradient(top,#7579ff,#b224ef);
     background: linear-gradient(top,#7579ff,#b224ef);
 }
 .login-form{
@@ -131,8 +87,11 @@ form {
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    background: #fff;
+    background: #000000;
     margin: 0 auto;
+}
+.login-form-logo img{
+    width: 85%;
 }
 .login-form-title{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
