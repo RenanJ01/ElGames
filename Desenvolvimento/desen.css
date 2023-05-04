@@ -44,7 +44,7 @@ header nav ul li{
 }
 header nav ul li a{
     display: block;
-    padding: 8px;
+    padding: 12px;
     color: var(--e-global-color-7);
     text-decoration: none;
 }
@@ -71,6 +71,20 @@ header nav ul li a:hover:not(.active):not(.logoA){
     padding-left: 10px;
     padding-right: 10px;
 }
+.logoBarra img{
+    height: 38px;
+}
+.img_avatar{
+    float: right;
+    padding: 4px 7px;
+    right: 0;
+    position: fixed;
+    margin-right: 10px;
+}
+.img_avatar img{
+    height: 30px;
+}
+
 
 /* Cabeçalho - Imagem */
 .ctn_img{
