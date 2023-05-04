@@ -15,7 +15,7 @@
 }
 
 body {
-    background-color: rgb(168 245 255);
+    background-color: var(--e-global-color-5);
     font-family: 'Times New Roman', Times, serif;
     scroll-behavior: smooth;
     margin: 0px;
@@ -35,10 +35,6 @@ body {
 .ctn-login{
     width: 100%;
     min-height: 100vh;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -78,10 +74,6 @@ body {
 .login-form-logo{
     font-size: 60px;
     color: #333;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -107,7 +99,7 @@ body {
 .wrap-input{
     width: 100%;
     position: relative;
-    border-bottom: 2px solid rgba(255,255,255,.24);
+    border-bottom: 2px solid #ffffff3d;
     margin-bottom: 30px;
 }
 .input{
@@ -191,6 +183,18 @@ textarea:focus, input:focus {
 
 .validate-input {
     position: relative;
+}
+
+/* Label */
+label.lbl_form {
+    font-size: 16px;
+}
+label {
+    font-family: Poppins-Regular;
+    font-size: 13px;
+    color: #fff;
+    line-height: 1.2;
+    -webkit-text-fill-color: #fff;
 }
 
 /* Btn Login */
