@@ -33,7 +33,7 @@
         ?>
     </main>
     <script>
-        // Redireciona o usuário para a página da DevMedia após cinco segundos
+        // Redireciona o usuário para a página principal - painel
         setTimeout(function() {
             window.location.href = "../painel.php";}, 5000);
     </script>

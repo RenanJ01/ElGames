@@ -13,6 +13,7 @@
     --e-global-color-6: #F29F05;
     --e-global-color-7: #fff;
 }
+
 body {
     font-family: 'Times New Roman', Times, serif;
     scroll-behavior: smooth;
@@ -26,13 +27,11 @@ body {
     background-color: #fff;
 }
 
-/*Principal - Form*/
-
+/* Principal - Form */
 .limiter{
     width: 100%;
     margin: 0 auto;
 }
-
 .ctn-login{
     width: 100%;
     min-height: 100vh;
@@ -61,6 +60,8 @@ body {
     top: 0;
     left: 0;
     background-color: var(--e-global-color-5);
+    background-image: url("img/Fundo Log.webp");
+    background-size: contain;
 }
 .wrap-login{
     width: 35%;
