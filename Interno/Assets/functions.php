@@ -6,19 +6,19 @@ function Login($con, $user)
     // Verifica se houve POST e se o usuário ou a senha é(são) vazio(s)
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (empty($_POST["fpass"])) {
-            header("Location: .\Access\login.html");
+            header("Location: ..\Access\login.html");
             exit;
         } else {
             $pass = tratar_input($_POST["fpass"]);
         }
         if (empty($_POST["fuser"])) {
-            header("Location: .\Access\login.html");
+            header("Location: ..\Access\login.html");
             exit;
         } else {
             $username = tratar_input($_POST["fuser"]);
         }
     } else {
-        header("Location: .\Access\login.html");
+        header("Location: ..\Access\login.html");
         exit;
     }
 
@@ -38,11 +38,12 @@ function Login($con, $user)
         $user->genero = $resultado[0]['genero_users'];
         $user->idade = $resultado[0]['idade_users'];
         $_SESSION["Usuario"] = $user;
-        header("Location: ..\painel.php");
+        header("Location: ..\..\painel.php");
         exit;
     } else {
         //Mensagem de erro quando os dados são inválidos e/ou o usuário não foi encontrado.
         echo "Login inválido!";
+        header("Location: ..\Access\login.html");
         exit;
     }
 }

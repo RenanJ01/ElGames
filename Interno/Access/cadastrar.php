@@ -1,15 +1,12 @@
 <?php
 //Cadastrar
-//require_once("..\\Assets\\conection.php");
-//include_once("..\\Assets\\functions.php");
+require_once("..\\Assets\\conection.php");
+require_once("..\\Assets\\functions.php");
+require_once("..\\Assets\\usuario.php");
+    
+//Verificar Login
+VerfLogin();
 
-// $conc = new Conexao();
-// $nameErr = $usernameErr = $senhaErr = $genderErr = $idadeErr = "";
-// $name = $username = $senha = $gender = $idade = "";
-
-//Codigo de redirecionamento
-//header("Location: .$newURL.php");
-//die();
 ?>
 
 <!DOCTYPE html>
@@ -58,7 +55,7 @@
                     </div>
 
                     <div class="wrap-input validate-input" data-validate="Entre Genero">
-                        <span class="focus-input" data-placeholder="&#xf211;"><label class="lbl_form" for="fgenero">Gênero:</label></span><br>
+                        <label class="lbl_form" for="fgenero">Gênero:</label><br>
                         <input type="radio" id="fgenero" name="fgenero" checked="true" value="M"><label for="mas">Masculino</label><br>
                         <input type="radio" id="fgenero" name="fgenero" value="F"><label for="fem">Feminino</label><br>
                         <input type="radio" id="fgenero" name="fgenero" value="O"><label for="out">Outro</label>

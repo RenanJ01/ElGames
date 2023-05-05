@@ -1,10 +1,10 @@
 <?php
-    require_once("Assets\\conection.php");
-    require_once("Assets\\functions.php");
-    require_once("Assets\\usuario.php");
-    
-    //Verificar Login
-    VerfLogin();
+require_once("Assets\\conection.php");
+require_once("Assets\\functions.php");
+require_once("Assets\\usuario.php");
+
+//Verificar Login
+VerfLogin();
 
 ?>
 
@@ -16,6 +16,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="painel.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
     <title>Painel</title>
 </head>
 
@@ -26,10 +28,29 @@
         <!-- Cabeçalho - Barra de Navegação -->
         <nav>
             <ul>
-                <li><a class="active" href="painel.php" target="_self">Painel</a></li>
-                <li><a href="./Desenvolvimento/desen.php" target="_self">Desenvolvimento</a></li>
-                <li><a href="./Perfil/perfil.php" target="_self">Perfil</a></li>
-                <li><a href="./Access/logoff.php" target="_self">Logoff</a></li>
+                <li><a class="active" href="painel.php" target="_self" title="Painel">
+                        <i class="fa fa-home"> Painel</i>
+                    </a></li>
+                <li><a href="./Desenvolvimento/desen.php" target="_self" title="Desenvolvimento">
+                        <i class="fa fa-gears"> Desenvolvimento</i>
+                    </a></li>
+                <li><a href="./Perfil/perfil.php" target="_self" title="Perfil">
+                        <i class="fa fa-vcard"> Perfil</i>
+                    </a></li>
+
+                <li>
+                    <div class="user">
+                        <i class="fa fa-user"></i>
+
+                        <div class="dropdown">
+                            <i class="dropbtn fa fa-sort-down"></i>
+                            <div class="dropdown-content">
+                                <a href="Access/login.html" target="_self">Login</a>
+                                <a href="Access/logoff.php" target="_self">Logoff</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
             </ul>
         </nav>
     </header>
@@ -77,11 +98,14 @@
 
     </footer>
     <script>
-        function Log_off(){
-            $.ajax({url:"/Access/logoff.php", success:function(result){
-                $("div").text(result);}
+        function Log_off() {
+            $.ajax({
+                url: "/Access/logoff.php",
+                success: function(result) {
+                    $("div").text(result);
+                }
             })
-        } 
+        }
     </script>
 </body>
 

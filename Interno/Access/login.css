@@ -17,6 +17,7 @@
 body {
     font-family: 'Times New Roman', Times, serif;
     scroll-behavior: smooth;
+    overflow-x: hidden;
     margin: 0px;
     padding: 0px;
     border: 0px;
