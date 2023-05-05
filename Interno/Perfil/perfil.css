@@ -43,7 +43,7 @@ header nav ul li{
 }
 header nav ul li a{
     display: block;
-    padding: 8px;
+    padding: 12px;
     color: var(--e-global-color-7);
     text-decoration: none;
 }
@@ -53,6 +53,54 @@ header nav ul li a:hover:not(.active):not(.logoA){
 }
 .active{
     background-color: #474747;
+}
+
+/* Menu - Usuario */
+.user{
+    right: 0;
+    position: fixed;
+    margin: 0 10px;
+}
+
+.dropbtn {
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    display: block;
+    padding: 12px;
+    color: var(--e-global-color-7);
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}  
+.dropdown-content {
+    display: none;
+    position: fixed;
+    background-color: #fff;
+    min-width: 130px;
+    box-shadow: 3px 6px 16px 0px rgb(0 0 0 / 50%);
+    z-index: 11;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    right: 0;
+}  
+.dropdown-content a {
+    color: black;
+    padding: 8px;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid #b9b9b9;
+}
+.dropdown-content a:hover {
+    background-color: #8d8d8d
+}  
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown:hover .dropbtn {
+    color: rgb(10, 9, 9);
+    background-color: var(--e-global-color-7);
 }
 
 /* Seção - Membros - Titular */
@@ -133,6 +181,99 @@ section  p {
     padding: 5px 6px;
     background-color: var(--e-global-color-2);
     color: var(--e-global-color-7);
+}
+
+
+.ctn_perfil {
+    max-width: 1400px;
+    margin-top: 80px !important;
+    padding: 0.01em 16px;
+    margin: auto;
+}
+
+.scn_perfil {
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+    border-radius: 4px;
+}
+
+.fd_color {
+    color: #000;
+    background-color: #fff;
+}
+
+/* Perfil */
+
+.scn_perfil div {
+    padding: 0.01em 16px;
+}
+.scn_perfil div h4 {
+    text-align: center;
+}
+
+p.p_img {
+    text-align: center;
+}
+.p_img img {
+    height: 106px;
+    width: 106px;
+    border-radius: 50%;
+    vertical-align: middle;
+    border-style: none;
+}
+.scn_perfil div p i {
+    margin-right: 16px;
+}
+
+/* Abas */
+
+.scn_abas {
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+    border: 4px;
+}
+
+button.btn_aba {
+    color: #fff;
+    background: #000;
+    text-align: left;
+    display: block;
+    width: 100%;
+    user-select: none;
+    padding: 8px 16px;
+    overflow: hidden;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    margin: 0;
+}
+.btn_aba i {
+    margin-right: 16px;
+}
+.hide {
+    display: none;
+}
+
+.dpy_aba {
+    padding: 0.01em 16px;
+}
+
+/* Tags */
+
+.scn_tags {
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+    border-radius: 4px;
+}
+
+.scn_tags div {
+    padding: 0.01em 16px;
+}
+
+span.spn_tags {
+    font-size: 12px;
+    display: inline-block;
+    padding: 0 8px;
+    text-align: center;
+    color: #fff;
+    background: rgb(167, 128, 1);
 }
 
 /* Rodapé */

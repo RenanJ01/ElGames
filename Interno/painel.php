@@ -17,7 +17,6 @@ VerfLogin();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="painel.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
     <title>Painel</title>
 </head>
 
@@ -37,7 +36,6 @@ VerfLogin();
                 <li><a href="./Perfil/perfil.php" target="_self" title="Perfil">
                         <i class="fa fa-vcard"> Perfil</i>
                     </a></li>
-
                 <li>
                     <div class="user">
                         <i class="fa fa-user"></i>
@@ -45,8 +43,8 @@ VerfLogin();
                         <div class="dropdown">
                             <i class="dropbtn fa fa-sort-down"></i>
                             <div class="dropdown-content">
-                                <a href="Access/login.html" target="_self">Login</a>
-                                <a href="Access/logoff.php" target="_self">Logoff</a>
+                                <a href="./Access/login.html" target="_self">Login</a>
+                                <a href="./Access/logoff.php" target="_self">Logoff</a>
                             </div>
                         </div>
                     </div>

@@ -43,7 +43,7 @@ header nav ul li{
 }
 header nav ul li a{
     display: block;
-    padding: 8px;
+    padding: 12px;
     color: var(--e-global-color-7);
     text-decoration: none;
 }
@@ -53,6 +53,54 @@ header nav ul li a:hover:not(.active):not(.logoA){
 }
 .active{
     background-color: #474747;
+}
+
+/* Menu - Usuario */
+.user{
+    right: 0;
+    position: fixed;
+    margin: 0 10px;
+}
+
+.dropbtn {
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    display: block;
+    padding: 12px;
+    color: var(--e-global-color-7);
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}  
+.dropdown-content {
+    display: none;
+    position: fixed;
+    background-color: #fff;
+    min-width: 130px;
+    box-shadow: 3px 6px 16px 0px rgb(0 0 0 / 50%);
+    z-index: 11;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    right: 0;
+}  
+.dropdown-content a {
+    color: black;
+    padding: 8px;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid #b9b9b9;
+}
+.dropdown-content a:hover {
+    background-color: #8d8d8d
+}  
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown:hover .dropbtn {
+    color: rgb(10, 9, 9);
+    background-color: var(--e-global-color-7);
 }
 
 /* Seção - Membros - Titular */

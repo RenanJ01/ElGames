@@ -69,14 +69,14 @@ header nav ul li a:hover:not(.active):not(.logoA){
 }
 .img_avatar{
     float: right;
-    padding: 4px 7px;
+    padding: 7px 7px;
     right: 0;
     position: fixed;
     margin-right: 10px;
 }
 .img_avatar i, .img_avatar img{
     height: 30px;
-    font-size: 35px;
+    font-size: 29px;
 }
 
 /* Cabeçalho - Slider */

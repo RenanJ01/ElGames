@@ -16,6 +16,7 @@ VerfLogin();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="desen.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <title>Painel</title>
 </head>
 
@@ -26,9 +27,28 @@ VerfLogin();
         <!-- Cabeçalho - Barra de Navegação -->
         <nav>
             <ul>
-                <li><a href="../painel.php" target="_self">Painel</a></li>
-                <li><a class="active" href="../Desenvolvimento/desen.php" target="_self">Desenvolvimento</a></li>
-                <li><a href="../Perfil/perfil.php" target="_self">Perfil</a></li>
+                <li><a href="../painel.php" target="_self" title="Painel">
+                        <i class="fa fa-home"> Painel</i>
+                    </a></li>
+                <li><a class="active" href="../Desenvolvimento/desen.php" target="_self" title="Desenvolvimento">
+                        <i class="fa fa-gears"> Desenvolvimento</i>
+                    </a></li>
+                <li><a href="../Perfil/perfil.php" target="_self" title="Perfil">
+                        <i class="fa fa-vcard"> Perfil</i>
+                    </a></li>
+                <li>
+                    <div class="user">
+                        <i class="fa fa-user"></i>
+
+                        <div class="dropdown">
+                            <i class="dropbtn fa fa-sort-down"></i>
+                            <div class="dropdown-content">
+                                <a href="../Access/login.html" target="_self">Login</a>
+                                <a href="../Access/logoff.php" target="_self">Logoff</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
             </ul>
         </nav>
     </header>
@@ -81,19 +101,19 @@ VerfLogin();
                     <th>Funções</th>
                 </tr>
                 <?php
-                    $con = new Conexao();
+                $con = new Conexao();
 
-                    $res = $con->Con_Select("Select * From tb_fases");
-                    
-                    foreach ($res as $row => $item) {
-                        echo '<tr>';
-                        echo '<td> '. $item['id_fases'] .'</td>';
-                        echo '<td> '. $item['title_fases'] .'</td>';
-                        echo '<td> '. $item['desc_fases'] .'</td>';
-                        echo '<td> '. $item['data_fases'] .'</td>';
-                        echo '<td> ferramentas </td>';
-                        echo '</tr>';
-                    }
+                $res = $con->Con_Select("Select * From tb_fases");
+
+                foreach ($res as $row => $item) {
+                    echo '<tr>';
+                    echo '<td> ' . $item['id_fases'] . '</td>';
+                    echo '<td> ' . $item['title_fases'] . '</td>';
+                    echo '<td> ' . $item['desc_fases'] . '</td>';
+                    echo '<td> ' . $item['data_fases'] . '</td>';
+                    echo '<td> ferramentas </td>';
+                    echo '</tr>';
+                }
 
                 ?>
             </table>
@@ -131,7 +151,7 @@ VerfLogin();
     <script>
         function ShowAba() {
             var aba = document.getElementById("scn_fases");
-            
+
             var dpy = aba.classList.contains("hide");
             if (dpy) {
                 aba.classList.remove("hide");
@@ -142,7 +162,7 @@ VerfLogin();
 
         function ShowAba2() {
             var aba = document.getElementById("scn_dados");
-            
+
             var dpy = aba.classList.contains("hide");
             if (dpy) {
                 aba.classList.remove("hide");
