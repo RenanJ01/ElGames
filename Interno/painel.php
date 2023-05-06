@@ -56,7 +56,7 @@ VerfLogin();
 
     <!-- Principal - Seções -->
     <main>
-        <br><br>
+        <br><br><br>
         <!-- Principal - Seção - ElGames -->
         <section class="scn_title">
             <h1>Painel</h1>

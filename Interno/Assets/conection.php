@@ -20,6 +20,7 @@ class Conexao
     {
         try {
             $con = $this->Con_AbrirConection();
+            $con->exec("SET CHARACTER SET utf8");
             $res = $con->prepare($query);
             $res->execute();
             if ($res) {

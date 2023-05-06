@@ -146,6 +146,16 @@ section{
     margin: 3px auto;    
     font-weight: bold;
 }
+.dt{
+    color: var(--e-global-color-7);
+    text-align: right;
+    font-size: 10px;
+    font-style: italic;
+    font-stretch: condensed;
+    margin: 12px 25px;
+    display: block;
+    font-family: fangsong;   
+}
 
 /* Rodapé */
 
