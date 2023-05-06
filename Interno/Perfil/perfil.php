@@ -7,8 +7,9 @@ require_once("..\\Assets\\usuario.php");
 VerfLogin();
 
 ?>
+
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="PT-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -16,6 +17,7 @@ VerfLogin();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="perfil.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="shortcut icon" href="../../Imagens/icone.ico" type="image/x-icon">
     <title>Perfil</title>
 </head>
 
@@ -54,25 +56,96 @@ VerfLogin();
 
     <!-- Principal - Seções -->
     <main>
-        <br><br>
+        <br><br><br>
         <!-- Principal - Seção - Titular -->
         <section class="scn_title">
             <h1>Perfil</h1>
         </section>
 
-        <br><br>
+        <!-- Container - Principal -->
+        <div class="ctn_perfil">
+            <!-- Profile -->
+            <div class="scn_perfil fd_color">
+                <div>
+                    <h4>
+                        <?php
+                            echo $_SESSION["Usuario"]->username
+                        ?>
+                    </h4>
+                    <p class="p_img">
+                        <?php
+                            echo '<img src="../../Imagens/icone.ico" alt="Avatar">';
+                        ?>
+                    </p>
+                    <hr>
+                    <p><i class="fa fa-id-card fa-fw "></i> 
+                        <?php
+                            echo $_SESSION["Usuario"]->nome
+                        ?>
+                    </p>
+                    <p><i class="fa fa-birthday-cake fa-fw "></i> 
+                        <?php
+                            echo $_SESSION["Usuario"]->idade
+                        ?>
+                    </p>
+                    <p><i class="fa fa-neuter fa-fw "></i> 
+                        <?php
+                            $g = $_SESSION["Usuario"]->genero;
+                            switch ($g) {
+                                case 'M':
+                                    echo "Masculino";
+                                    break;
+                                case 'F':
+                                    echo "Feminino";
+                                    break;
 
-        <figure>
-            <img src="" alt="">
-        </figure>
-        <section class="scn_pfl">
-            <?php
-            echo "<h1>Nome:</h1>" . $_SESSION["Usuario"]->nome . "
-                <h1>Username:</h1>" . $_SESSION["Usuario"]->username . "
-                <h1>Gênero:</h1>" . $_SESSION["Usuario"]->genero . "
-                <h1>Idade:</h1>" . $_SESSION["Usuario"]->idade;
-            ?>
-        </section>
+                                default:
+                                    echo "Outro";
+                                    break;
+                            }
+                        ?>
+                    </p>
+                </div>
+            </div>
+            <br>
+
+            <!-- Abas -->
+            <div class="scn_abas">
+                <div class="fd_color">
+                    <button onclick="myFunction('Demo1')" class="btn_aba">
+                        <i class="fa fa-group fa-fw"></i> Meu Grupo</button>
+                    <div id="Demo1" class="dpy_aba hide">
+                        <p>David, Eriel, Jonatas, Juan, Lucas, Matheus, Wictor</p>
+                    </div>
+                    <button onclick="myFunction('Demo2')" class="btn_aba"><i class="fa fa-calendar-check-o fa-fw"></i> Meu Objetivo</button>
+                    <div id="Demo2" class="dpy_aba hide">
+                        <p>Fazer um bom TCC e zapar!</p>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <!-- Interesses -->
+            <div class="scn_tags fd_color">
+                <div>
+                    <p>Interesses</p>
+                    <p>
+                        <span class="spn_tags">IFSP</span>
+                        <span class="spn_tags">Game</span>
+                        <span class="spn_tags">ElGames</span>
+                        <span class="spn_tags">TCC</span>
+                        <span class="spn_tags">Design</span>
+                        <span class="spn_tags">Programação</span>
+                        <span class="spn_tags">Amigos</span>
+                        <span class="spn_tags">Arte</span>
+                        <span class="spn_tags">Lembranças</span>
+                    </p>
+                </div>
+            </div>
+            <br>
+
+            <!-- Fim do Container -->
+        </div>      
 
         <br><br>
     </main>
@@ -102,7 +175,29 @@ VerfLogin();
         </div>
 
     </footer>
+    <script>
+        // Accordion
+        function myFunction(id) {
+            var x = document.getElementById(id);
+            if (x.className.indexOf("show") == -1) {
+                x.className += " show";
+                x.previousElementSibling.className += " btn_template";
+            } else {
+                x.className = x.className.replace("show", "");
+                x.previousElementSibling.className = x.previousElementSibling.className.replace(" btn_template", "");
+            }
+        }
 
+        // Used to toggle the menu on smaller screens when clicking on the menu button
+        function openNav() {
+            var x = document.getElementById("navDemo");
+            if (x.className.indexOf("show") == -1) {
+                x.className += " show";
+            } else {
+                x.className = x.className.replace(" show", "");
+            }
+        }
+    </script>
 </body>
 
 </html>

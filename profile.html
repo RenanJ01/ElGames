@@ -64,65 +64,41 @@
 -->
 
     <!-- Page Container -->
-    <div class="ctn_perfil w3-container w3-content">
+    <div class="ctn_perfil">
             <!-- Profile -->
-            <div class="scn_perfil fd_color w3-card w3-round w3-white">
-                <div class="w3-container">
-                    <h4 class="w3-center">My Profile</h4>
-                    <p class="w3-center p_img"><img src="/w3images/avatar3.png" class="w3-circle"
-                            style="height:106px;width:106px" alt="Avatar"></p>
+            <div class="scn_perfil fd_color">
+                <div>
+                    <h4>My Profile</h4>
+                    <p class="p_img">
+                        <img src="./Imagens/icone.ico" alt="Avatar">
+                    </p>
                     <hr>
-                    <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> Designer, UI</p>
-                    <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> London, UK</p>
-                    <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> April 1, 1988</p>
+                    <p><i class="fa fa-pencil fa-fw"></i> Designer, UI</p>
+                    <p><i class="fa fa-home fa-fw"></i> London, UK</p>
+                    <p><i class="fa fa-birthday-cake fa-fw"></i> April 1, 1988</p>
                 </div>
             </div>
             <br>
 
             <!-- Accordion -->
-            <div class="scn_abas w3-card w3-round">
-                <div class="fd_color w3-white">
-                    <button onclick="myFunction('Demo1')" class="btn_aba w3-button w3-block w3-theme-l1 w3-left-align"><i
-                            class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> My Groups</button>
-                    <div id="Demo1" class="dpy_aba hide w3-hide w3-container">
+            <div class="scn_abas">
+                <div class="fd_color">
+                    <button onclick="myFunction('Demo1')" class="btn_aba">
+                        <i class="fa fa-circle-o-notch fa-fw"></i> My Groups</button>
+                    <div id="Demo1" class="dpy_aba hide">
                         <p>Some text..</p>
                     </div>
-                    <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i
-                            class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> My Events</button>
-                    <div id="Demo2" class="w3-hide w3-container">
+                    <button onclick="myFunction('Demo2')" class="btn_aba"><i
+                            class="fa fa-calendar-check-o fa-fw"></i> My Events</button>
+                    <div id="Demo2" class="dpy_aba hide">
                         <p>Some other text..</p>
-                    </div>
-                    <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i
-                            class="fa fa-users fa-fw w3-margin-right"></i> My Photos</button>
-                    <div id="Demo3" class="w3-hide w3-container">
-                        <div class="w3-row-padding">
-                            <br>
-                            <div class="w3-half">
-                                <img src="/w3images/lights.jpg" style="width:100%" class="w3-margin-bottom">
-                            </div>
-                            <div class="w3-half">
-                                <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
-                            </div>
-                            <div class="w3-half">
-                                <img src="/w3images/mountains.jpg" style="width:100%" class="w3-margin-bottom">
-                            </div>
-                            <div class="w3-half">
-                                <img src="/w3images/forest.jpg" style="width:100%" class="w3-margin-bottom">
-                            </div>
-                            <div class="w3-half">
-                                <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
-                            </div>
-                            <div class="w3-half">
-                                <img src="/w3images/snow.jpg" style="width:100%" class="w3-margin-bottom">
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
             <br>
 
             <!-- Interests -->
-            <div class="scn_tags fd_color w3-hide-small">
+            <div class="scn_tags fd_color">
                 <div>
                     <p>Interests</p>
                     <p>
@@ -150,23 +126,22 @@
         // Accordion
         function myFunction(id) {
             var x = document.getElementById(id);
-            if (x.className.indexOf("w3-show") == -1) {
-                x.className += " w3-show";
-                x.previousElementSibling.className += " w3-theme-d1";
+            if (x.className.indexOf("show") == -1) {
+                x.className += " show";
+                x.previousElementSibling.className += " btn_template";
             } else {
-                x.className = x.className.replace("w3-show", "");
-                x.previousElementSibling.className =
-                    x.previousElementSibling.className.replace(" w3-theme-d1", "");
+                x.className = x.className.replace("show", "");
+                x.previousElementSibling.className = x.previousElementSibling.className.replace(" btn_template", "");
             }
         }
 
         // Used to toggle the menu on smaller screens when clicking on the menu button
         function openNav() {
             var x = document.getElementById("navDemo");
-            if (x.className.indexOf("w3-show") == -1) {
-                x.className += " w3-show";
+            if (x.className.indexOf("show") == -1) {
+                x.className += " show";
             } else {
-                x.className = x.className.replace(" w3-show", "");
+                x.className = x.className.replace(" show", "");
             }
         }
     </script>

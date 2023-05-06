@@ -219,6 +219,7 @@ p.p_img {
     border-radius: 50%;
     vertical-align: middle;
     border-style: none;
+    background-color: #000;
 }
 .scn_perfil div p i {
     margin-right: 16px;
@@ -244,6 +245,10 @@ button.btn_aba {
     cursor: pointer;
     border: none;
     margin: 0;
+    transition: background-color 1s;
+}
+.btn_template{
+    background: #2f2f2f !important;
 }
 .btn_aba i {
     margin-right: 16px;
@@ -251,7 +256,9 @@ button.btn_aba {
 .hide {
     display: none;
 }
-
+.show {
+    display: block !important;
+}
 .dpy_aba {
     padding: 0.01em 16px;
 }
