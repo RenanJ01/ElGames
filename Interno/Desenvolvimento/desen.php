@@ -17,8 +17,9 @@ VerfLogin();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="desen.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" />
     <link rel="shortcut icon" href="../../Imagens/icone.ico" type="image/x-icon">
-    <title>Painel</title>
+    <title>Painel - Desenvolvimento</title>
 </head>
 
 <body>
@@ -67,7 +68,7 @@ VerfLogin();
         <br>
 
         <section id="scn_fases" class="hide">
-            <form action="fase.php" method="post">
+            <form action="fase.php" method="post"  visible="true">
                 <fieldset class="fld_form">
                     <h1>Cadastrar Fase</h1><br>
 
@@ -103,24 +104,34 @@ VerfLogin();
                 </tr>
                 <?php
                 $con = new Conexao();
-
                 $res = $con->Con_Select("Select * From tb_fases");
+                $ind = 0;
 
                 foreach ($res as $row => $item) {
-                    echo '<tr>';
+                    echo '<tr id="tr' . $ind . '">';
                     echo '<td> ' . $item['id_fases'] . '</td>';
                     echo '<td> ' . $item['title_fases'] . '</td>';
                     echo '<td> ' . $item['desc_fases'] . '</td>';
                     echo '<td> ' . $item['data_fases'] . '</td>';
-                    echo '<td> ferramentas </td>';
+                    echo '<td class="function"> 
+                    <button class="btn_tabela" id="btn_delete" onclick="ViewModal2(' . $ind . ')" title="Deletar"><i class="fa fa-trash"></i></button>
+                    <button class="btn_tabela" id="btn_update" onclick="ViewModal(' . $ind . ')" title="Editar"><i class="fa fa-pencil"></i></button> 
+                    </td>';
                     echo '</tr>';
+                    $ind++;
                 }
 
                 ?>
             </table>
         </section>
+        
+        <!-- Modal - Editar-->
+        <iframe src="./alter/update.html" frameborder="0"></iframe>
+        <!-- Modal - Deletar-->
+        <iframe src="./alter/delete.html" frameborder="0"></iframe>
 
         <br><br>
+
     </main>
 
     <!-- Rodapé da Pagina -->
@@ -170,6 +181,93 @@ VerfLogin();
             } else {
                 aba.classList.add("hide");
             }
+        }
+
+        //Modal
+        var form = document.getElementsByTagName("form");
+        var modal = document.getElementById("ctn_modal");
+        var modal2 = document.getElementById("ctn_modal2");
+        var btn_can = document.getElementById("btn_cancelar");
+        var btn_can2 = document.getElementById("btn_cancelar2");
+        var span = document.getElementsByClassName("close")[0];
+        var span2 = document.getElementsByClassName("close")[1];
+
+        function ViewModal(ind) {
+            var tr = document.getElementById("tr" + ind);
+            var td = [tr.getElementsByTagName("td")[0].innerText, tr.getElementsByTagName("td")[1].innerText, tr.getElementsByTagName("td")[2].innerText, tr.getElementsByTagName("td")[3].innerText];
+
+            document.getElementById("fid_upd").setAttribute("value", td[0]);
+            document.getElementById("ftitle_upd").setAttribute("value", td[1]);
+            document.getElementById("fdesc_upd").innerText = td[2];
+            document.getElementById("fdata_upd").setAttribute("value", td[3]);
+            modal.style.display = "block";
+            FormV(1);
+        }
+
+        function ViewModal2(ind) {
+            var tr = document.getElementById("tr" + ind);
+            var td = tr.getElementsByTagName("td")[0].innerText;
+
+            document.getElementById("fidDel").setAttribute("value", td);
+            modal2.style.display = "block";
+            FormV(2);
+        }
+
+        //Span close
+        span.onclick = function() {
+            modal.style.display = "none";
+            FormV(0);
+        }
+        span2.onclick = function() {
+            modal2.style.display = "none";
+            FormV(0);
+        }
+
+        //Button Cancelar
+        btn_can.onclick = function() {
+            modal.style.display = "none";
+            FormV(0);
+        }
+        btn_can2.onclick = function() {
+            modal2.style.display = "none";
+            FormV(0);
+        }
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                FormV(0);
+            }
+            if (event.target == modal2) {
+                modal2.style.display = "none";
+                FormV(0);
+            }
+        }
+
+        function FormV(frm){
+            switch (frm) {
+                case 0:
+                    form[0].setAttribute("visible", "true");       
+                    form[1].setAttribute("visible", "false");       
+                    form[2].setAttribute("visible", "false");
+                    console.log(form[0]);
+                break;
+                case 1:
+                    form[0].setAttribute("visible", "false");       
+                    form[1].setAttribute("visible", "true");       
+                    form[2].setAttribute("visible", "false");       
+                break;
+                case 2:
+                    form[0].setAttribute("visible", "false");       
+                    form[1].setAttribute("visible", "false");       
+                    form[2].setAttribute("visible", "true");       
+                break;
+                default:
+                    form[0].setAttribute("visible", "true");       
+                    form[1].setAttribute("visible", "false");       
+                    form[2].setAttribute("visible", "false");       
+                break;
+            }            
         }
     </script>
 </body>

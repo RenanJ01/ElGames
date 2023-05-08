@@ -27,12 +27,6 @@ VerfLogin();
         <div class="ctn-login">
             <div class="wrap-login">
                 <form action="php/cadastro.php" method="post">
-                    <!-- 
-                        <span class="login-form-logo"> <i class="">Imagem</i> 
-                            <img src="../../Imagens/icone.ico" alt="ElGames">
-                        </span>
-                     -->
-
                     <span class="login-form-logo">
                         <!-- <i class="">Imagem</i>  -->
                         <img src="../../Imagens/icone.ico" alt="ElGames">

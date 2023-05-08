@@ -91,7 +91,7 @@
                 <ul>
                     <li><a href="../Inicio.html" title="Página Inícial" target="_self">Página Inícial</a></li>
                     <li><a href="../Jogo/jogo.html" title="jogo" target="_self">Jogo</a></li>
-                    <li><a href="../Desenvolvimento/desen.html" title="Desenvolvimento"
+                    <li><a href="../Desenvolvimento/desen.php" title="Desenvolvimento"
                             target="_self">Desenvolvimento</a></li>
                     <li><a href="../Membros/membros.html" title="Membros" target="_self">Membros</a></li>
                 </ul>
