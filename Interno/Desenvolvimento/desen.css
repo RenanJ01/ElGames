@@ -255,6 +255,9 @@ section#scn_dados.hide {
     }
 }
 
+iframe{
+    display: none;
+}
 /* The Modal */
 .modal {
     display: none;

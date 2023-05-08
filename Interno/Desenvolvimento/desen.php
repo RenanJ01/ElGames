@@ -126,9 +126,56 @@ VerfLogin();
         </section>
         
         <!-- Modal - Editar-->
-        <iframe src="./alter/update.html" frameborder="0"></iframe>
+        <div id="ctn_modal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content wrap-login">
+                <span class="close">&times;</span>
+
+                <form action="alter/upd.php" method="post"  visible="false">
+
+                    <span class="login-form-title">Editar</span><br /><br />
+
+                    <input type="hidden" id="fid_upd" name="fidUpd">
+
+                    <div class="wrap-input validate-input" data-validate="Entre Título">
+                        <input type="text" id="ftitle_upd" name="ftitleUpd" placeholder="Título" class="input" required>
+                        <span class="focus-input" data-placeholder="&#xf2c3;"></span>
+                    </div>
+
+                    <div class="wrap-input validate-input" data-validate="Entre Descrição">
+                        <textarea id="fdesc_upd" name="fdescUpd" placeholder="Descrição da Fase" class="textarea input" required></textarea>
+                        <span class="focus-input" data-placeholder="&#xf2c3;"></span>
+                    </div>
+
+                    <div class="wrap-input validate-input" data-validate="Entre Data">
+                        <input type="date" id="fdata_upd" name="fdataUpd" placeholder="Data" min="2023-01-01" class="input" required />
+                        <span class="focus-input" data-placeholder="&#xf332;"></span>
+                    </div>
+
+                    <div class="ctn-login-form-btn">
+                        <button id="btn_alterar" class="login-form-btn" type="submit">Alterar</button>
+                        <button id="btn_cancelar" class="login-form-btn" type="reset">Cancelar</button>
+                    </div>
+                    <br />
+                </form>
+
+            </div>
+
+        </div>
+
         <!-- Modal - Deletar-->
-        <iframe src="./alter/delete.html" frameborder="0"></iframe>
+        <div id="ctn_modal2" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content wrap-login">
+                <span class="close">&times;</span>
+
+                <iframe src="./alter/delete.html" frameborder="0"></iframe>
+
+            </div>
+
+        </div>
 
         <br><br>
 
