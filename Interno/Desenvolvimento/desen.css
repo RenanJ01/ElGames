@@ -292,6 +292,7 @@ iframe {
     height: 100%;
     width: 100%;
 }
+
 /* The Close Button */
 .close {
     color: #fff;
@@ -314,7 +315,6 @@ button#btn_update {
     overflow: hidden;
     padding: 55px 55px 37px;
     background: -webkit-linear-gradient(120deg, #000000, #cfcfcf);
-    height: 60%;
 }
 .login-form-title {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
