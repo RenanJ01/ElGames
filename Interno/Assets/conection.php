@@ -116,17 +116,17 @@ class Conexao
         try {
             $con = $this->Con_AbrirConection();
             //Verificar os usuarios
-            $cmd = $con->prepare("SELECT * FROM tb_fases WHERE id_fases = :id");
+            $cmd = $con->prepare("SELECT * FROM tb_fases WHERE id_fases=:id");
             $cmd->bindValue("id", $id);
             $cmd->execute();
             $verf = $cmd->fetch();            
             if (count($verf) > 0) {
                 //Atualizar
-                $res = $con->prepare("UPDATE tb_fases SET title_fases = 'title', desc_fases= 'desc', data_fases = 'data' WHERE id_fases = 'id'");
-                $res->bindValue("id", $id);
+                $res = $con->prepare("UPDATE tb_fases SET title_fases=:title, desc_fases=:descr, data_fases=:datas WHERE id_fases=:idU");
+                $res->bindValue("idU", $id);
                 $res->bindValue("title", $title);
-                $res->bindValue("desc", $desc);
-                $res->bindValue("data", $data);
+                $res->bindValue("descr", $desc);
+                $res->bindValue("datas", $data);
                 $res->execute();
                 if ($res) {
                     return true;
