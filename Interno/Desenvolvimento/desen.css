@@ -255,9 +255,7 @@ section#scn_dados.hide {
     }
 }
 
-iframe{
-    display: none;
-}
+
 /* The Modal */
 .modal {
     display: none;
@@ -290,6 +288,10 @@ iframe{
     /* Could be more or less, depending on screen size */
 }
 
+iframe {
+    height: 100%;
+    width: 100%;
+}
 /* The Close Button */
 .close {
     color: #fff;
@@ -312,7 +314,7 @@ button#btn_update {
     overflow: hidden;
     padding: 55px 55px 37px;
     background: -webkit-linear-gradient(120deg, #000000, #cfcfcf);
-    /* background: -webkit-linear-gradient(top,#000000,#61008b); */
+    height: 60%;
 }
 .login-form-title {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;

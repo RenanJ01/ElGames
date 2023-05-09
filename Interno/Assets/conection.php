@@ -116,7 +116,7 @@ class Conexao
         try {
             $con = $this->Con_AbrirConection();
             //Verificar os usuarios
-            $cmd = $con->prepare("SELECT * FROM tb_fases WHERE id_fases = ':id'");
+            $cmd = $con->prepare("SELECT * FROM tb_fases WHERE id_fases = :id");
             $cmd->bindValue("id", $id);
             $cmd->execute();
             $verf = $cmd->fetch();            
@@ -180,10 +180,10 @@ class Conexao
         try {
             $con = $this->Con_AbrirConection();
             //Verificar os usuarios
-            $cmd = $con->prepare("DELETE FROM tb_fases WHERE id_fases=':id'");
+            $cmd = $con->prepare("DELETE FROM tb_fases WHERE id_fases=:id");
             $cmd->bindValue("id", $id);
-            $cmd->execute();
-            if($cmd){
+            $res = $cmd->execute();
+            if($res){
                 return true;
             } else {
                 return false;

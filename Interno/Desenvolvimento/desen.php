@@ -68,7 +68,7 @@ VerfLogin();
         <br>
 
         <section id="scn_fases" class="hide">
-            <form action="fase.php" method="post"  visible="true">
+            <form action="fase.php" method="post" id="form_fase">
                 <fieldset class="fld_form">
                     <h1>Cadastrar Fase</h1><br>
 
@@ -82,7 +82,7 @@ VerfLogin();
                     <input type="date" id="fdata" name="fdata" min="2023-01-01"><br><br>
 
                     <div class="btn_group">
-                        <input class="btn_action" type="submit" value="Cadastrar">
+                        <input class="btn_action" type="submit" value="Cadastrar" form="form_fase">
                         <input class="btn_action" type="reset" value="Redefinir"><br>
                     </div>
                 </fieldset>
@@ -124,7 +124,7 @@ VerfLogin();
                 ?>
             </table>
         </section>
-        
+
         <!-- Modal - Editar-->
         <div id="ctn_modal" class="modal">
 
@@ -132,7 +132,7 @@ VerfLogin();
             <div class="modal-content wrap-login">
                 <span class="close">&times;</span>
 
-                <form action="alter/upd.php" method="post"  visible="false">
+                <form id="form_upd" action="./alter/upd.php" method="post">
 
                     <span class="login-form-title">Editar</span><br /><br />
 
@@ -154,8 +154,8 @@ VerfLogin();
                     </div>
 
                     <div class="ctn-login-form-btn">
-                        <button id="btn_alterar" class="login-form-btn" type="submit">Alterar</button>
-                        <button id="btn_cancelar" class="login-form-btn" type="reset">Cancelar</button>
+                        <button id="btn_alterar" class="login-form-btn" type="submit" value="Alterar" form="form_upd">Alterar</button>
+                        <button id="btn_cancelar" class="login-form-btn" type="reset" value="Cancela">Cancelar</button>
                     </div>
                     <br />
                 </form>
@@ -171,7 +171,24 @@ VerfLogin();
             <div class="modal-content wrap-login">
                 <span class="close">&times;</span>
 
-                <iframe src="./alter/delete.html" frameborder="0"></iframe>
+                <!-- <iframe src="./alter/delete.html" frameborder="0"></iframe> -->
+                <form id="form_del" action="./alter/del.php" method="post">
+
+                    <span class="login-form-title">Deletar</span><br /><br />
+
+                    <input type="hidden" id="fidDel" name="fidDel">
+
+                    <div class="wrap-input validate-input" data-validate="Entre Descrição">
+                        <span class="textarea">Você quer mesmo deletar esta fase?</span>
+                    </div>
+
+                    <div class="ctn-login-form-btn">
+                        <button id="btn_apagar" class="login-form-btn" type="submit" value="Deletar" form="form_del">Confirmar</button>
+                        <button id="btn_cancelar2" class="login-form-btn" type="reset" value="Cancela2">Cancelar</button>
+                    </div>
+                    <br />
+                </form>
+
 
             </div>
 
@@ -232,6 +249,7 @@ VerfLogin();
 
         //Modal
         var form = document.getElementsByTagName("form");
+        // var iframe = document.getElementsByTagName("iframe");
         var modal = document.getElementById("ctn_modal");
         var modal2 = document.getElementById("ctn_modal2");
         var btn_can = document.getElementById("btn_cancelar");
@@ -248,7 +266,6 @@ VerfLogin();
             document.getElementById("fdesc_upd").innerText = td[2];
             document.getElementById("fdata_upd").setAttribute("value", td[3]);
             modal.style.display = "block";
-            FormV(1);
         }
 
         function ViewModal2(ind) {
@@ -257,65 +274,33 @@ VerfLogin();
 
             document.getElementById("fidDel").setAttribute("value", td);
             modal2.style.display = "block";
-            FormV(2);
         }
 
         //Span close
         span.onclick = function() {
             modal.style.display = "none";
-            FormV(0);
         }
         span2.onclick = function() {
             modal2.style.display = "none";
-            FormV(0);
         }
 
         //Button Cancelar
         btn_can.onclick = function() {
             modal.style.display = "none";
-            FormV(0);
         }
         btn_can2.onclick = function() {
             modal2.style.display = "none";
-            FormV(0);
         }
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
-                FormV(0);
             }
             if (event.target == modal2) {
                 modal2.style.display = "none";
-                FormV(0);
             }
         }
 
-        function FormV(frm){
-            switch (frm) {
-                case 0:
-                    form[0].setAttribute("visible", "true");       
-                    form[1].setAttribute("visible", "false");       
-                    form[2].setAttribute("visible", "false");
-                    console.log(form[0]);
-                break;
-                case 1:
-                    form[0].setAttribute("visible", "false");       
-                    form[1].setAttribute("visible", "true");       
-                    form[2].setAttribute("visible", "false");       
-                break;
-                case 2:
-                    form[0].setAttribute("visible", "false");       
-                    form[1].setAttribute("visible", "false");       
-                    form[2].setAttribute("visible", "true");       
-                break;
-                default:
-                    form[0].setAttribute("visible", "true");       
-                    form[1].setAttribute("visible", "false");       
-                    form[2].setAttribute("visible", "false");       
-                break;
-            }            
-        }
     </script>
 </body>
 
