@@ -18,23 +18,28 @@ xmlhttp.send();
 
 } -->
 <?php
-include_once("..\\..\\Assets\\connection.php");
+include_once("conection.php");
+include_once("functions.php");
 
-$cont = $_POST["cont"];
+$verf = false;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["cont"])) {
-        header("Location: ..\Access\login.html");
-        exit;
+        $verf = false;
     } else {
-        $pass = tratar_input($_POST["cont"]);
+        $cont = tratar_input($_POST["cont"]);
+        $verf = true;
     }
 }
 
-// Se o cookie não existir, inicia uma
-if (!isset($_COOKIE["Vils"])){
-    setcookie("Vils", "1", time()+60*60*24);
-
+if($verf){
+//Se o cookie não existir, inicia uma
+ if (!isset($_COOKIE["Vils"])){
+    setcookie("Vils", "true", time()+60*60*24);
+    $con = new Conexao();
+    
+    $con->Con_InsUpd_Vils(date("Y-m-d"));
+ }
 }
 
 ?>

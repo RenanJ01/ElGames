@@ -58,6 +58,28 @@ class Conexao
             echo "Ocorreu o erro:" . $e->getMessage();
         }
     }
+    
+    public function Con_InsUpd_Vils($data)
+    {
+        try {
+            $con = $this->Con_AbrirConection();
+            $res = $con->prepare("SELECT * FROM tb_visualiz WHERE data_vils=:dt");
+            $res->bindValue("dt", $data);
+            $res->execute();
+            $verf = $res->fetchAll();
+            if(count($verf) > 0){
+                $upd = $con->prepare("UPDATE tb_visualiz SET cont_vils=cont_vils+1 WHERE data_vils=:dtu");
+                $upd->bindValue("dtu", $data);
+                $upd->execute();
+            }else{
+                $ins = $con->prepare("INSERT INTO tb_visualiz(data_vils, cont_vils) VALUES(:dti, '1')");
+                $ins->bindValue("dti", $data);
+                $ins->execute();
+            }
+        } catch (Exception $e) {
+            echo "Ocorreu o erro:" . $e->getMessage();
+        }
+    }
 
     public function Con_Insert_Fase($title, $desc, $data)
     {
