@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Load c3.css -->
+    <link href="./graph/c3.css" rel="stylesheet">
+    <!-- Load d3.js and c3.js -->
+    <script src="./graph/d3-5.8.2.min.js" charset="utf-8"></script>
+    <script src="./graph/c3.min.js"></script>
+    <script src="./graph/jquery-1.11.0.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body onload="Graph();">
+    <div id="grafico">
+
+    </div>
+
+    <script>
+        function Graph() {
+
+            if (window.XMLHttpRequest) {
+                /* code for IE7+, Firefox, Chrome, Opera, Safari */
+                xmlhttp = new XMLHttpRequest();
+            }
+            else {
+                /* code for IE6, IE5 */
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            //http://localhost:8080/ElGames/Interno/Assets/contador.php
+            xmlhttp.open("POST", "http://localhost:8080/ElGames/Interno/graph/graph.php");
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.onload = function () {
+                const xml = xmlhttp.responseXML;
+                const xmlDoc = xmlhttp.responseText; 
+
+                //data_vils
+                //cont_vils
+
+                document.getElementById("grafico").innerHTML = xmlDoc;
+            };
+            xmlhttp.send();
+
+        }
+    </script>
+</body>
+
+</html>
