@@ -129,6 +129,13 @@ section{
     font-size: medium;
     margin: 3px auto;
 }
+div#grafico {
+    margin: 0 auto;
+    background: #c1c1c1b8;
+    box-shadow: 0px 2px 14px 2px #04040482;
+    width: 95%;
+    border-radius: 5px;
+}
 
 
 /* Rodapé */

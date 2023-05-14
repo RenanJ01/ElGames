@@ -18,10 +18,16 @@ VerfLogin();
     <link rel="stylesheet" type="text/css" href="painel.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="shortcut icon" href=".././Imagens/icone.ico" type="image/x-icon">
+    <!-- Load c3.css -->
+    <link href="./graph/c3.css" rel="stylesheet">
+    <!-- Load d3.js and c3.js -->
+    <script src="./graph/d3-5.8.2.min.js" charset="utf-8"></script>
+    <script src="./graph/c3.min.js"></script>
+    <script src="./graph/jquery-1.11.0.min.js"></script>
     <title>Painel</title>
 </head>
 
-<body>
+<body onload="Graph();">
     <!-- Cabeçalho da Página -->
     <header>
 
@@ -69,6 +75,14 @@ VerfLogin();
             <h1>Nossa Proposta</h1>
             <p>BláBláBláBláBláBláBláBláBláBláBlá<br>BláBláBláBláBláBláBláBláBláBláBláBláBláBláBláBláBláBlá</p>
         </section>
+        <br><br>
+        <section>
+            <h1>Visitas</h1>
+            <div id="grafico">
+
+            </div>
+        </section>
+        <br><br>
     </main>
 
     <!-- Rodapé da Pagina -->
@@ -97,6 +111,61 @@ VerfLogin();
 
     </footer>
     <script>
+        const dt = [],
+            cont = [];
+
+        function Graph() {
+
+            if (window.XMLHttpRequest) {
+                /* code for IE7+, Firefox, Chrome, Opera, Safari */
+                xmlhttp = new XMLHttpRequest();
+            } else {
+                /* code for IE6, IE5 */
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            //http://localhost:8080/ElGames/Interno/Assets/contador.php
+            xmlhttp.open("GET", "http://localhost:8080/ElGames/Interno/graph/graph.php");
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.onload = function() {
+                var dados = JSON.parse(this.responseText);
+                if (dados.length > 0) {
+
+                    cont.push('Visitantes');
+                    dt.push('x');
+
+                    $.each(dados, function(i, obj) {
+                        cont.push(parseInt(obj.cont_vils));
+                        dt.push(obj.data_vils);
+                    })
+
+                    var i = 0;
+                    var chart = c3.generate({
+                        bindto: '#grafico',
+                        data: {
+                            x: 'x',
+                            columns: [dt, cont]
+                        },
+                        color:{
+                            pattern: ['var(--e-global-color-6)']
+                        },
+                        axis: {
+                            x: {
+                                type: 'timeseries',
+                                tick: {
+                                    format: '%Y-%m-%d'
+                                }
+                            }
+                        }
+                    });
+                } else {
+                    $('#grafico').html('<span>Não foram encontrados os dados!</span>');
+                }
+            };
+            xmlhttp.send();
+
+        }
+
         function Log_off() {
             $.ajax({
                 url: "/Access/logoff.php",
