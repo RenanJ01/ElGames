@@ -40,7 +40,7 @@ VerfLogin();
                     </a></li>
                 <li>
                     <div class="user">
-                        <i class="fa fa-user"></i>
+                        <i class="fa fa-user-circle" style="color: #fff;"></i>
 
                         <div class="dropdown">
                             <i class="dropbtn fa fa-sort-down"></i>
