@@ -1,4 +1,5 @@
 <?php
+const criptkey = "1409";
 
 //Login//
 function Login($con, $user)
@@ -23,8 +24,10 @@ function Login($con, $user)
     }
 
     //Verificação do usuário/senha digitados
-    $verf = $con->Con_Select("SELECT * FROM tb_usuarios WHERE username_users = '". $username."' AND senha_users = '".$pass."' LIMIT 1;");
-    if (count($verf) == 1) {
+    $verf = $con->Con_Select("SELECT * FROM tb_usuarios WHERE username_users = '". $username ."' LIMIT 1;");
+    // $verf = $con->Con_Select("SELECT * FROM tb_usuarios WHERE username_users = '". $username."' AND senha_users = '".$pass."' LIMIT 1;");
+
+    if (count($verf) == 1 && password_verify($pass, $verf[0]['senha_users'])) {
 
         // Salva os dados encontados na variável $resultado
         $resultado = $verf;
@@ -33,8 +36,8 @@ function Login($con, $user)
         if (!isset($_SESSION))session_start();
 
         // Salva os dados encontrados na sessão
-        $user->username = $resultado[0]['username_users'];
-        $user->nome = $resultado[0]['nome_users'];
+        $user->username = decryptData($resultado[0]['username_users'], criptkey);
+        $user->nome = decryptData($resultado[0]['nome_users'], criptkey);
         $user->genero = $resultado[0]['genero_users'];
         $user->idade = $resultado[0]['idade_users'];
         $_SESSION["Usuario"] = $user;
@@ -42,8 +45,10 @@ function Login($con, $user)
         exit;
     } else {
         //Mensagem de erro quando os dados são inválidos e/ou o usuário não foi encontrado.
-        echo "Login inválido!";
-        header("Location: ..\Access\login.html");
+        echo "Login inválido!<br>";
+        echo $username."<br>";
+        print_r(count($verf));
+        //header("Location: ..\login.html");
         exit;
     }
 }
@@ -51,7 +56,9 @@ function Login($con, $user)
 function VerfLogin()
 {
     // A sessão precisa ser iniciada em cada página diferente
-    if (!isset($_SESSION)) session_start();
+    if (!isset($_SESSION)) {
+        session_start();
+    }
 
     // Verifica se não há a variável da sessão que identifica o usuário
     if (!isset($_SESSION["Usuario"])) {
@@ -129,15 +136,38 @@ function Cadastro($conc)
         }
     }
 
-    Verif_var($name);
     Verif_var($username);
     Verif_var($senha);
     Verif_var($idade);
     Verif_var($gender);
+    Verif_var($name);
 
-    $res = $conc->Con_Insert_cadastro($name, $username, $senha, $gender, $idade);
+    $criptname = encryptData($name, criptkey);
+    $criptsenha = password_hash($senha, PASSWORD_DEFAULT);
+
+    $res = $conc->Con_Insert_cadastro($criptname, $username, $criptsenha, $gender, $idade);
 
     if ($res) {
-        return $res = "bem Sucedido";
+        return $res = "Bem Sucedido";
+    }else{
+        return $res = "Ocorreu um erro.";
     }
+}
+
+// Função para criptografar
+function encryptData($data, $key) {
+    $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-cbc'));
+    $encryptedData = openssl_encrypt($data, 'aes-256-cbc', $key, OPENSSL_RAW_DATA, $iv);
+    $encryptedData = base64_encode($iv . $encryptedData);
+    return $encryptedData;
+}
+
+// Função para descriptografar
+function decryptData($encryptedData, $key) {
+    $encryptedData = base64_decode($encryptedData);
+    $ivSize = openssl_cipher_iv_length('aes-256-cbc');
+    $iv = substr($encryptedData, 0, $ivSize);
+    $encryptedData = substr($encryptedData, $ivSize);
+    $decryptedData = openssl_decrypt($encryptedData, 'aes-256-cbc', $key, OPENSSL_RAW_DATA, $iv);
+    return $decryptedData;
 }

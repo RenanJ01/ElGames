@@ -7,8 +7,9 @@ class Conexao
     private function Con_AbrirConection()
     {
         try {
-            $this->conection = new PDO("mysql: host=localhost:8080; dbname=elgames", "clientes", "usuariostigresa1001");
-            $this->conection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this-> conection = new PDO("mysql: host=localhost:8080; dbname=elgames", "clientes", "usuariostigresa1001");
+            $this-> conection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this-> conection->exec("SET CHARACTER SET utf8");
             return $this->conection;
             //echo "Sucesso na conexão!";
         } catch (PDOException $e) {
@@ -105,13 +106,14 @@ class Conexao
         try {
             $con = $this->Con_AbrirConection();
             //Verificar os usuarios
-            $cmd = $con->prepare("SELECT * FROM tb_usuarios WHERE username_users = ':username'");
+            $cmd = $con->prepare("SELECT * FROM tb_usuarios WHERE username_users = :username;");
             $cmd->bindValue("username", $username);
             $cmd->execute();
-            $verf = $cmd->fetch();            
+            $verf = $cmd->fetchAll();
             if (count($verf) > 0) {
+                echo count($verf); 
                 return false;
-            } else {
+            } else { 
                 //Cadastro
                 $res = $con->prepare("INSERT INTO tb_usuarios(nome_users, username_users, senha_users, genero_users, idade_users) VALUES(:nome, :username, :senha, :genero, :idade)");
                 $res->bindValue("nome", $name);
@@ -168,7 +170,7 @@ class Conexao
         try {
             $con = $this->Con_AbrirConection();
             //Verificar os usuarios
-            $cmd = $con->prepare("SELECT * FROM tb_usuarios WHERE username_users = ':username'");
+            $cmd = $con->prepare("SELECT * FROM tb_usuarios WHERE username_users = :username;");
             $cmd->bindValue("username", $username);
             $cmd->execute();
             $verf = $cmd->fetch();            

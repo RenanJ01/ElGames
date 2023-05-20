@@ -20,7 +20,7 @@ VerfLogin();
     <link rel="shortcut icon" href=".././Imagens/icone.ico" type="image/x-icon">
     <!-- Load c3.css -->
     <link href="./graph/c3.css" rel="stylesheet">
-    <!-- Load d3.js and c3.js -->
+    <!-- Load d3Interno/painel.css.js and c3.js -->
     <script src="./graph/d3-5.8.2.min.js" charset="utf-8"></script>
     <script src="./graph/c3.min.js"></script>
     <script src="./graph/jquery-1.11.0.min.js"></script>
@@ -72,8 +72,10 @@ VerfLogin();
         <br><br>
 
         <section>
-            <h1>Nossa Proposta</h1>
-            <p>BláBláBláBláBláBláBláBláBláBláBlá<br>BláBláBláBláBláBláBláBláBláBláBláBláBláBláBláBláBláBlá</p>
+            <h1>Menu</h1>
+            <p>
+                <a href="./Access/cadastrar.php" target="" class=""><i class="fa fa-"></i> Cadastro usuario</a>
+            </p>
         </section>
         <br><br>
         <section>
