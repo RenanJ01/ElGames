@@ -66,15 +66,20 @@ VerfLogin();
         <!-- Principal - Seção - ElGames -->
         <section class="scn_title">
             <h1>Painel</h1>
-            <p>BláBláBláBláBláBláBláBláBláBláBlá<br>BláBláBláBláBláBláBláBláBláBláBláBláBláBláBláBláBláBlá</p>
+            <p>
+                <?php
+                    echo "Bem-vindo(a) de volta, ". $_SESSION['Usuario']->nome ."!";
+                ?>
+            </p>
         </section>
 
         <br><br>
 
-        <section>
+        <section class="scn_menu">
             <h1>Menu</h1>
             <p>
-                <a href="./Access/cadastrar.php" target="" class=""><i class="fa fa-"></i> Cadastro usuario</a>
+                <a href="./Access/cadastrar.php" target="_self" class="btn_menu"><i class="fa fa-user-plus"></i> Cadastrar novo usuario</a>
+                <a href="./Access/cadastrar.php" target="_self" class="btn_menu"><i class="fa fa-logoff"></i> Sair</a>
             </p>
         </section>
         <br><br>
