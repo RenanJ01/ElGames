@@ -45,10 +45,10 @@ function Login($con, $user)
         exit;
     } else {
         //Mensagem de erro quando os dados são inválidos e/ou o usuário não foi encontrado.
-        echo "Login inválido!<br>";
-        echo $username."<br>";
-        print_r(count($verf));
-        //header("Location: ..\login.html");
+        // echo "Login inválido!<br>";
+        // echo $username."<br>";
+        // print_r(count($verf));
+        header("Location: ..\login.html");
         exit;
     }
 }
