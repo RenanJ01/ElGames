@@ -153,13 +153,15 @@ section {
     overflow: hidden;
     border: 1px solid #000;
     background: #8b8b8b82;
+    border-radius: 5px;
+    box-shadow: 1px 2px 9px 0px #000;
 }
 
 .scn_menu h1 span {
     font-size: 10px;
     display: block;
     margin: -6px 0 0 75px;
-    color: var(--e-global-color-2);
+    color: var(--e-global-color-6);
 }
 
 .btn_menu {

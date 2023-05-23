@@ -6,32 +6,23 @@ require_once("..\\Assets\\usuario.php");
 //Verificar Login
 VerfLogin();
 
-$username = $file = null;
+//Verificar se a imagem foi enviada
+if(isset($HTTP_POST_FILES["fileimg"]))
+{
+    $con = new Conexao();
+    $verf = $con->Con_Select("SELECT * FROM tb_usuarios WHERE username = " . $_SESSION["Usuario"]->username . ";");
+    if(count($verf)){
+        $id_user = $verf[0]["id_users"];
 
-// Verifica se houve POST e se o usuário ou a senha é(são) vazio(s)
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (empty($_POST["fuser"])) {
-        header("Location: ..\Access\login.html");
-        exit;
-    } else {
-        $username = tratar_input($_POST["fuser"]);
+        $query = $con->Con_Select("SELECT * FROM tb_usuarios_img WHERE username = " . $id_user . ";");
+        if(count($query) > 0){
+            //Atualizar o caminho para a imagem
+
+        }else{
+            //Inserir o caminho para a imagem
+        }
+    }else{
+        echo "Erro";
     }
-    if (empty($_POST["fimg"])) {
-        header("Location: ..\Access\login.html");
-        exit;
-    } else {
-        $file = tratar_input($_POST["fimg"]);
-    }
-} else {
-    header("Location: ..\Access\login.html");
-    exit;
-}
-
-$con = new Conexao();
-$verf = $con->Con_Select("SELECT * FROM tb_imagens WHERE username = " . $username . ";");
-if(count($verf)){
-
-}else{
-
 }
 ?>
