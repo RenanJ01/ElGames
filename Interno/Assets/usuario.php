@@ -5,6 +5,9 @@
         public $nome;
         public $genero;
         public $idade;
-                
+    }
+
+    function SalvarImagem($file){
+        
     }
 ?>

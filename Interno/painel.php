@@ -76,11 +76,12 @@ VerfLogin();
         <br><br>
 
         <section class="scn_menu">
-            <h1>Menu</h1>
-            <p>
+            <h1>Menu
+                <span>Funções</span>
+            </h1>
                 <a href="./Access/cadastrar.php" target="_self" class="btn_menu"><i class="fa fa-user-plus"></i> Cadastrar novo usuario</a>
-                <a href="./Access/cadastrar.php" target="_self" class="btn_menu"><i class="fa fa-logoff"></i> Sair</a>
-            </p>
+                <a href="./Access/cadastrar.php" target="_self" class="btn_menu"><i class="fa fa-user-times"></i> Deletar o usuario</a>
+                <a href="./Access/cadastrar.php" target="_self" class="btn_menu"><i class="fa fa-file-image-o"></i> Mudar a imagem de perfil</a>
         </section>
         <br><br>
         <section>

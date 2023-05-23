@@ -36,7 +36,7 @@ function Login($con, $user)
         if (!isset($_SESSION))session_start();
 
         // Salva os dados encontrados na sessão
-        $user->username = decryptData($resultado[0]['username_users'], criptkey);
+        $user->username = $resultado[0]['username_users'];
         $user->nome = decryptData($resultado[0]['nome_users'], criptkey);
         $user->genero = $resultado[0]['genero_users'];
         $user->idade = $resultado[0]['idade_users'];
@@ -144,7 +144,7 @@ function Cadastro($conc)
 
     $criptname = encryptData($name, criptkey);
     $criptsenha = password_hash($senha, PASSWORD_DEFAULT);
-
+    
     $res = $conc->Con_Insert_cadastro($criptname, $username, $criptsenha, $gender, $idade);
 
     if ($res) {

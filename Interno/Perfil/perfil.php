@@ -69,7 +69,7 @@ VerfLogin();
                 <div>
                     <h4>
                         <?php
-                            echo $_SESSION["Usuario"]->username
+                            echo $_SESSION["Usuario"]->username;
                         ?>
                     </h4>
                     <p class="p_img">
