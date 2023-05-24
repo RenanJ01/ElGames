@@ -69,45 +69,71 @@ VerfLogin();
                 <div>
                     <h4>
                         <?php
-                            echo $_SESSION["Usuario"]->username;
+                        echo $_SESSION["Usuario"]->username;
                         ?>
                     </h4>
                     <p class="p_img">
                         <?php
-                            echo '<img src="../../Imagens/icone.ico" alt="Avatar">';
+                        echo '<img src="../../Imagens/icone.ico" alt="Avatar">';
                         ?>
                     </p>
                     <hr>
-                    <p><i class="fa fa-id-card fa-fw "></i> 
+                    <p><i class="fa fa-id-card fa-fw "></i>
                         <?php
-                            echo $_SESSION["Usuario"]->nome
+                        echo $_SESSION["Usuario"]->nome
                         ?>
                     </p>
-                    <p><i class="fa fa-birthday-cake fa-fw "></i> 
+                    <p><i class="fa fa-birthday-cake fa-fw "></i>
                         <?php
-                            echo $_SESSION["Usuario"]->idade
+                        echo $_SESSION["Usuario"]->idade . " anos";
                         ?>
                     </p>
-                    <p><i class="fa fa-neuter fa-fw "></i> 
+                    <p><i class="fa fa-neuter fa-fw "></i>
                         <?php
-                            $g = $_SESSION["Usuario"]->genero;
-                            switch ($g) {
-                                case 'M':
-                                    echo "Masculino";
-                                    break;
-                                case 'F':
-                                    echo "Feminino";
-                                    break;
+                        $g = $_SESSION["Usuario"]->genero;
+                        switch ($g) {
+                            case 'M':
+                                echo "Masculino";
+                                break;
+                            case 'F':
+                                echo "Feminino";
+                                break;
 
-                                default:
-                                    echo "Outro";
-                                    break;
-                            }
+                            default:
+                                echo "Outro";
+                                break;
+                        }
                         ?>
                     </p>
                 </div>
             </div>
             <br>
+
+            <!-- Modal - Imagem -->
+            <div id="ctn_modal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content wrap-login">
+                    <span class="close">&times;</span>
+
+                    <form id="form_img" action="arquivar.php" method="post" enctype="multipart/form-data">
+
+                        <span class="login-form-title">Imagem</span><br /><br />
+                        
+                        <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+
+                        <input type="file" accept="image/png, image/jpg, image/jpeg" id="fileuser" name="fileuser" class="input" style="-webkit-text-fill-color: #000; padding: 0;" required>
+
+                        <div class="ctn-login-form-btn">
+                            <button id="btn_imagem" class="login-form-btn" type="submit" value="Enviar" form="form_img">Enviar</button>
+                            <button id="btn_cancelar" class="login-form-btn" type="reset" value="Cancelar">Cancelar</button>
+                        </div>
+                        <br />
+                    </form>
+
+                </div>
+
+            </div>
 
             <!-- Abas -->
             <div class="scn_abas">
@@ -145,7 +171,7 @@ VerfLogin();
             <br>
 
             <!-- Fim do Container -->
-        </div>      
+        </div>
 
         <br><br>
     </main>

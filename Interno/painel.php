@@ -24,6 +24,7 @@ VerfLogin();
     <script src="./graph/d3-5.8.2.min.js" charset="utf-8"></script>
     <script src="./graph/c3.min.js"></script>
     <script src="./graph/jquery-1.11.0.min.js"></script>
+
     <title>Painel</title>
 </head>
 
@@ -68,7 +69,7 @@ VerfLogin();
             <h1>Painel</h1>
             <p>
                 <?php
-                    echo "Bem-vindo(a) de volta, ". $_SESSION['Usuario']->nome ."!";
+                echo "Bem-vindo(a) de volta, " . $_SESSION['Usuario']->nome . "!";
                 ?>
             </p>
         </section>
@@ -79,10 +80,62 @@ VerfLogin();
             <h1>Menu
                 <span>Funções</span>
             </h1>
-                <a href="./Access/cadastrar.php" target="_self" class="btn_menu"><i class="fa fa-user-plus"></i> Cadastrar novo usuario</a>
-                <a href="./Access/cadastrar.php" target="_self" class="btn_menu"><i class="fa fa-user-times"></i> Deletar o usuario</a>
-                <a href="./Access/cadastrar.php" target="_self" class="btn_menu"><i class="fa fa-file-image-o"></i> Mudar a imagem de perfil</a>
+            <a href="./Access/cadastrar.php" target="_self" class="btn_menu"><i class="fa fa-user-plus"></i> Cadastrar novo usuario</a>
+            <button onclick="ViewModal(1);" target="_self" class="btn_menu"><i class="fa fa-user-times"></i> Deletar o usuario</button>
+            <button onclick="ViewModal(0);" target="_self" class="btn_menu"><i class="fa fa-file-image-o"></i> Mudar a imagem de perfil</button>
         </section>
+
+        <!-- Modal - Imagem -->
+        <div id="ctn_modal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content wrap-login">
+                <span class="close">&times;</span>
+
+                <form id="form_img" action="./Perfil/arquivar.php" method="post">
+
+                    <span class="login-form-title">Imagem</span><br /><br />
+
+                    <input type="file" accept="image/png, image/jpg, image/jpeg" id="fileuser" name="fileuser" class="input" style="-webkit-text-fill-color: #000; padding: 0;" required>
+
+                    <div class="ctn-login-form-btn">
+                        <button id="btn_imagem" class="login-form-btn" type="submit" value="Enviar" form="form_img">Enviar</button>
+                        <button id="btn_cancelar" class="login-form-btn" type="reset" value="Cancelar">Cancelar</button>
+                    </div>
+                    <br />
+                </form>
+
+            </div>
+
+        </div>
+
+        <!-- Modal - Deletar -->
+        <div id="ctn_modal2" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content wrap-login">
+                <span class="close">&times;</span>
+
+                <form id="form_del" action="./Access/php/excluir.php" method="post">
+
+                    <span class="login-form-title">Deletar Usuario</span><br /><br />
+
+                    <div class="wrap-input validate-input" data-validate="Entre Descrição">
+                        <span class="textarea">Você quer mesmo excluir seu usuario permanentemente?</span>
+                    </div>
+
+                    <div class="ctn-login-form-btn">
+                        <button id="btn_apagar" class="login-form-btn" type="submit" value="Deletar" form="form_del">Confirmar</button>
+                        <button id="btn_cancelar2" class="login-form-btn" type="reset" value="Cancela2">Cancelar</button>
+                    </div>
+                    <br />
+                </form>
+
+
+            </div>
+
+        </div>
+
         <br><br>
         <section>
             <h1>Visitas</h1>
@@ -154,7 +207,7 @@ VerfLogin();
                             x: 'x',
                             columns: [dt, cont]
                         },
-                        color:{
+                        color: {
                             pattern: ['var(--e-global-color-6)']
                         },
                         axis: {
@@ -181,6 +234,50 @@ VerfLogin();
                     $("div").text(result);
                 }
             })
+        }
+
+        //Modal
+        var modal = document.getElementById("ctn_modal");
+        var modal2 = document.getElementById("ctn_modal2");
+        var btn_can = document.getElementById("btn_cancelar");
+        var btn_can2 = document.getElementById("btn_cancelar2");
+        var span = document.getElementsByClassName("close")[0];
+        var span2 = document.getElementsByClassName("close")[1];
+
+        function ViewModal(ind) {
+            switch (ind) {
+                case 0:
+                    modal.style.display = "block";
+                    break;
+                case 1:
+                    modal2.style.display = "block";
+                    break;
+            }
+        }
+
+        //Span close
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+        span2.onclick = function() {
+            modal2.style.display = "none";
+        }
+
+        //Button Cancelar
+        btn_can.onclick = function() {
+            modal.style.display = "none";
+        }
+        btn_can2.onclick = function() {
+            modal2.style.display = "none";
+        }
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+            if (event.target == modal2) {
+                modal2.style.display = "none";
+            }
         }
     </script>
 </body>
