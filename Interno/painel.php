@@ -92,9 +92,11 @@ VerfLogin();
             <div class="modal-content wrap-login">
                 <span class="close">&times;</span>
 
-                <form id="form_img" action="./Perfil/arquivar.php" method="post">
+                <form id="form_img" action="./Perfil/arquivar.php"  method="post" enctype="multipart/form-data">
 
                     <span class="login-form-title">Imagem</span><br /><br />
+
+                    <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
 
                     <input type="file" accept="image/png, image/jpg, image/jpeg" id="fileuser" name="fileuser" class="input" style="-webkit-text-fill-color: #000; padding: 0;" required>
 
