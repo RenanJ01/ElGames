@@ -74,8 +74,13 @@ VerfLogin();
                     </h4>
                     <p class="p_img">
                         <?php
-                        echo '<img src="../../Imagens/icone.ico" alt="Avatar">';
+                            if(isset($_SESSION["Usuario"]->img)){
+                                echo '<img src="'.".".str_replace(dirname(__FILE__), "", $_SESSION["Usuario"]->img).'" alt="Avatar">';
+                            }else{
+                                echo '<img src="../../Imagens/icone.ico" alt="Avatar">';
+                            }
                         ?>
+                        <span id="btn_img" onclick="ViewModal();">Editar</span>
                     </p>
                     <hr>
                     <p><i class="fa fa-id-card fa-fw "></i>
@@ -122,7 +127,7 @@ VerfLogin();
                         
                         <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
 
-                        <input type="file" accept="image/png, image/jpg, image/jpeg" id="fileuser" name="fileuser" class="input" style="-webkit-text-fill-color: #000; padding: 0;" required>
+                        <input type="file" accept="image/*" id="fileuser" name="fileuser" class="input" style="-webkit-text-fill-color: #000; padding: 0;" required>
 
                         <div class="ctn-login-form-btn">
                             <button id="btn_imagem" class="login-form-btn" type="submit" value="Enviar" form="form_img">Enviar</button>
@@ -221,6 +226,32 @@ VerfLogin();
                 x.className += " show";
             } else {
                 x.className = x.className.replace(" show", "");
+            }
+        }
+
+        //Modal
+        var modal = document.getElementById("ctn_modal");
+        var btn_can = document.getElementById("btn_cancelar");
+        var span = document.getElementsByClassName("close")[0];
+
+        function ViewModal() {
+            modal.style.display = "block";
+        }
+
+        //Span close
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        //Button Cancelar
+        btn_can.onclick = function() {
+            modal.style.display = "none";
+        }
+        
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
             }
         }
     </script>

@@ -31,7 +31,8 @@ function Login($con, $user)
 
         // Salva os dados encontados na variável $resultado
         $resultado = $verf;
-        
+        $sqlimg = $con->Con_Select("SELECT * FROM tb_usuarios_img WHERE id_users = '". $resultado[0]['id_users'] ."' LIMIT 1;");
+
         // Se a sessão não existir, inicia uma
         if (!isset($_SESSION))session_start();
 
@@ -40,6 +41,11 @@ function Login($con, $user)
         $user->nome = decryptData($resultado[0]['nome_users'], criptkey);
         $user->genero = $resultado[0]['genero_users'];
         $user->idade = $resultado[0]['idade_users'];
+        if (count($sqlimg) == 1){
+            $user->img = $sqlimg[0]['caminho_users_img'];
+        }else{
+            $user->img = null;
+        }
         $_SESSION["Usuario"] = $user;
         header("Location: ..\..\painel.php");
         exit;

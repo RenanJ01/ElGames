@@ -98,7 +98,7 @@ VerfLogin();
 
                     <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
 
-                    <input type="file" accept="image/png, image/jpg, image/jpeg" id="fileuser" name="fileuser" class="input" style="-webkit-text-fill-color: #000; padding: 0;" required>
+                    <input type="file" accept="image/*" id="fileuser" name="fileuser" class="input" style="-webkit-text-fill-color: #000; padding: 0;" required>
 
                     <div class="ctn-login-form-btn">
                         <button id="btn_imagem" class="login-form-btn" type="submit" value="Enviar" form="form_img">Enviar</button>

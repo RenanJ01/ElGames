@@ -69,6 +69,8 @@
                 echo $msg;
                 ?>
             </p>
+            <br>
+            <i class="fa fa-spinner fa-spin" style="font-size:24px; color: var(--e-global-color-1);"></i>
         </section>
 
         <br><br>

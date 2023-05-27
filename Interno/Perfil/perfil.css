@@ -209,7 +209,7 @@ section  p {
     text-align: center;
 }
 
-p.p_img {
+.p_img {
     text-align: center;
 }
 .p_img img {
@@ -219,6 +219,19 @@ p.p_img {
     vertical-align: middle;
     border-style: none;
     background-color: #000;
+}
+#btn_img{
+    background-color: #525252;
+    color: #fff;
+    display: block;
+    border-radius: 30%;
+    width: fit-content;
+    font-size: 11px;
+    padding: 1px 2px;
+    position: absolute;
+    right: 42%;
+    top: 56%;
+    cursor: pointer;
 }
 .scn_perfil div p i {
     margin-right: 16px;
@@ -287,6 +300,295 @@ span.spn_tags {
         display: none!important;
     }
 }
+
+
+/* The Modal */
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 10;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    /* Could be more or less, depending on screen size */
+}
+
+iframe {
+    height: 100%;
+    width: 100%;
+}
+
+/* The Close Button */
+.close {
+    color: #fff;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+button#btn_update {
+    border: none;
+}
+.wrap-login {
+    width: 35%;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 55px 55px 37px;
+    background: -webkit-linear-gradient(120deg, #000000, #cfcfcf);
+}
+.login-form-title {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    color: #fff;
+    line-height: 1.2;
+    text-align: center;
+    text-transform: uppercase;
+    display: block;
+    font-style: italic;
+}
+.wrap-input {
+    width: 100%;
+    position: relative;
+    border-bottom: 2px solid #ffffff3d;
+    margin-bottom: 30px;
+}
+.input {
+    /* font-family: Poppins-Regular; */
+    font-size: 16px;
+    color: #fff;
+    line-height: 1.2;
+    display: block;
+    width: 100%;
+    height: 45px;
+    background: 0 0;
+    padding: 0 5px 0 38px;
+    outline: none;
+    border: none;
+    -webkit-text-fill-color: #fff;
+}
+.input:focus {
+    padding-left: 5px;
+}
+.input:focus+.focus-input::before {
+    width: 100%;
+}
+.focus-input::before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    -webkit-transition: all .4s;
+    -o-transition: all .4s;
+    -moz-transition: all .4s;
+    transition: all .4s;
+    background-color: #fff;
+}
+.input:focus+.focus-input::after {
+    top: -22px;
+    font-size: 18px;
+}
+
+.focus-input::after {
+    font-family: Material-Design-Iconic-Font;
+    font-size: 22px;
+    color: #fff;
+    content: attr(data-placeholder);
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 6px;
+    left: 0;
+    padding-left: 5px;
+    -webkit-transition: all .4s;
+    -o-transition: all .4s;
+    -moz-transition: all .4s;
+    transition: all .4s;
+}
+
+textarea#fdesc_upd {
+    width: 100%;
+    min-height: 4em;
+    resize: none;
+    padding-top: 7px;
+}
+
+textarea#fdesc_upd:focus {
+    width: 98% !important;
+}
+
+.textarea {
+    font-size: 16px;
+    color: #fff;
+    line-height: 1.2;
+    display: block;
+    outline: none;
+    border: none;
+    -webkit-text-fill-color: #fff;
+}
+
+*,
+::after,
+::before {
+    box-sizing: inherit;
+}
+
+button,
+input {
+    overflow: visible;
+}
+
+textarea:focus,
+input:focus {
+    border-color: transparent !important;
+}
+
+[role=button],
+a,
+area,
+button,
+input,
+label,
+select,
+summary,
+textarea {
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+}
+
+.focus-input {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.validate-input {
+    position: relative;
+}
+
+/* Label */
+label.lbl_form {
+    font-size: 16px;
+}
+
+label {
+    font-family: Poppins-Regular;
+    font-size: 13px;
+    color: #fff;
+    line-height: 1.2;
+    -webkit-text-fill-color: #fff;
+}
+
+/* Btn Login */
+.ctn-login-form-btn {
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.login-form-btn {
+    font-family: Poppins-Medium;
+    font-size: 16px;
+    color: #555;
+    line-height: 1.2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    min-width: 120px;
+    height: 50px;
+    border-radius: 25px;
+    background: -webkit-linear-gradient(bottom, #7579ff, #b224ef);
+    background: linear-gradient(bottom, #7579ff, #b224ef);
+    position: relative;
+    z-index: 1;
+    -webkit-transition: all .4s;
+    transition: all .4s;
+    margin: 10px;
+}
+
+.login-form-btn::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    background-color: #fff;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    -webkit-transition: all .4s;
+    -o-transition: all .4s;
+    -moz-transition: all .4s;
+    transition: all .4s;
+}
+
+button {
+    outline: none !important;
+    border: none;
+    background: 0 0;
+}
+
+button,
+select {
+    text-transform: none;
+}
+
+button,
+input {
+    overflow: visible;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+/* Final Model */
 
 /* Rodapé */
 footer {

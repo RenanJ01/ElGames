@@ -133,6 +133,23 @@ class Conexao
         }
     }
 
+    public function Con_Insert_Img($id, $caminho)
+    {
+        try {
+            $con = $this->Con_AbrirConection();
+            $res = $con->prepare("INSERT INTO tb_usuarios_img(caminho_users_img, id_users) VALUES(:caminho, :id);");
+            $res->bindValue("id", $id);
+            $res->bindValue("caminho", $caminho);
+            $res->execute();
+            if ($res) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception $e) {
+            echo "Ocorreu o erro:" . $e->getMessage();
+        }
+    }
 
     //Update
     public function Con_Update_Fase($id, $title, $desc, $data)
@@ -195,7 +212,24 @@ class Conexao
             echo "Ocorreu o erro:" . $e->getMessage();
         }
     }
-
+    public function Con_Update_Img($id, $caminho)
+    {
+        try {
+            $con = $this->Con_AbrirConection();
+                //Atualizar
+                $res = $con->prepare("UPDATE tb_usuarios_img SET caminho_users_img=:caminho WHERE id_users_img=:id;");
+                $res->bindValue("id", $id);
+                $res->bindValue("caminho", $caminho);
+                $res->execute();
+                if ($res) {
+                    return true;
+                } else {
+                    return false;
+                }
+        } catch (Exception $e) {
+            echo "Ocorreu o erro:" . $e->getMessage();
+        }
+    }
 
 
     // Delete

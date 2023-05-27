@@ -27,6 +27,7 @@ function SalvarImagem($file, $pasta, $tipos)
     }
 
     if (move_uploaded_file($file["tmp_name"], $pasta . DIRECTORY_SEPARATOR . $nomeFinal . $tipo)) {
+        $_SESSION["Usuario"]->img = $pasta . DIRECTORY_SEPARATOR . $nomeFinal . $tipo;
         return "O arquivo foi salvo com sucesso.";
     } else {
         return "O arquivo não foi salvo com sucesso.";
