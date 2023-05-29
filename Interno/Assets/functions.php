@@ -7,43 +7,68 @@ function Login($con, $user)
     // Verifica se houve POST e se o usuário ou a senha é(são) vazio(s)
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (empty($_POST["fpass"])) {
-            header("Location: ..\Access\login.html");
+            header("Location: ..\login.html");
             exit;
         } else {
             $pass = tratar_input($_POST["fpass"]);
         }
         if (empty($_POST["fuser"])) {
-            header("Location: ..\Access\login.html");
+            header("Location: ..\login.html");
             exit;
         } else {
             $username = tratar_input($_POST["fuser"]);
         }
     } else {
-        header("Location: ..\Access\login.html");
+        header("Location: ..\login.html");
         exit;
     }
 
     //Verificação do usuário/senha digitados
-    $verf = $con->Con_Select("SELECT * FROM tb_usuarios WHERE username_users = '". $username ."' LIMIT 1;");
+    $verf = $con->Con_Select("SELECT * FROM tb_usuarios WHERE username_users = '" . $username . "' LIMIT 1;");
     // $verf = $con->Con_Select("SELECT * FROM tb_usuarios WHERE username_users = '". $username."' AND senha_users = '".$pass."' LIMIT 1;");
 
     if (count($verf) == 1 && password_verify($pass, $verf[0]['senha_users'])) {
 
         // Salva os dados encontados na variável $resultado
         $resultado = $verf;
-        $sqlimg = $con->Con_Select("SELECT * FROM tb_usuarios_img WHERE id_users = '". $resultado[0]['id_users'] ."' LIMIT 1;");
+        $sqlimg = $con->Con_Select("SELECT * FROM tb_usuarios_img WHERE id_users = '" . $resultado[0]['id_users'] . "' LIMIT 1;");
+
+        /* define o limitador de cache para 'private' */
+        session_cache_limiter('private');
+        $cache_limiter = session_cache_limiter();
+
+        /* define o prazo do cache em 30 minutos * /
+        session_cache_expire(30);
+        $cache_expire = session_cache_expire();*/
+
+        $secure = true;
+        $httponly = true;
+        $samesite = 'lax';
+
+        if (PHP_VERSION_ID < 70300) {
+            session_set_cookie_params(0, '/; samesite=' . $samesite, $_SERVER['HTTP_HOST'], $secure, $httponly);
+        } else {
+            session_set_cookie_params([
+                'lifetime' => 0,
+                'path' => '/',
+                'domain' => $_SERVER['HTTP_HOST'],
+                'secure' => $secure,
+                'httponly' => $httponly,
+                'samesite' => $samesite
+            ]);
+        }
 
         // Se a sessão não existir, inicia uma
-        if (!isset($_SESSION))session_start();
+        if (!isset($_SESSION)) session_start();
 
         // Salva os dados encontrados na sessão
         $user->username = $resultado[0]['username_users'];
         $user->nome = decryptData($resultado[0]['nome_users'], criptkey);
         $user->genero = $resultado[0]['genero_users'];
         $user->idade = $resultado[0]['idade_users'];
-        if (count($sqlimg) == 1){
+        if (count($sqlimg) == 1) {
             $user->img = $sqlimg[0]['caminho_users_img'];
-        }else{
+        } else {
             $user->img = null;
         }
         $_SESSION["Usuario"] = $user;
@@ -80,6 +105,25 @@ function VerfLogin()
 function Logoff()
 {
     session_start();
+    // Apaga todas as variáveis da sessão
+    $_SESSION = array();
+
+    // Se é preciso matar a sessão, então os cookies de sessão também devem ser apagados.
+    // Nota: Isto destruirá a sessão, e não apenas os dados!
+    if (ini_get("session.use_cookies")) {
+        $params = session_get_cookie_params();
+        setcookie(
+            session_name(),
+            '',
+            time() - 42000,
+            $params["path"],
+            $params["domain"],
+            $params["secure"],
+            $params["httponly"]
+        );
+    }
+
+    // Por último, destrói a sessão
     session_destroy();
     header("Location: ..\Access\login.html");
     exit;
@@ -150,18 +194,19 @@ function Cadastro($conc)
 
     $criptname = encryptData($name, criptkey);
     $criptsenha = password_hash($senha, PASSWORD_DEFAULT);
-    
+
     $res = $conc->Con_Insert_cadastro($criptname, $username, $criptsenha, $gender, $idade);
 
     if ($res) {
         return $res = "Bem Sucedido";
-    }else{
+    } else {
         return $res = "Ocorreu um erro.";
     }
 }
 
 // Função para criptografar
-function encryptData($data, $key) {
+function encryptData($data, $key)
+{
     $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-cbc'));
     $encryptedData = openssl_encrypt($data, 'aes-256-cbc', $key, OPENSSL_RAW_DATA, $iv);
     $encryptedData = base64_encode($iv . $encryptedData);
@@ -169,7 +214,8 @@ function encryptData($data, $key) {
 }
 
 // Função para descriptografar
-function decryptData($encryptedData, $key) {
+function decryptData($encryptedData, $key)
+{
     $encryptedData = base64_decode($encryptedData);
     $ivSize = openssl_cipher_iv_length('aes-256-cbc');
     $iv = substr($encryptedData, 0, $ivSize);

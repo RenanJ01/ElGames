@@ -75,9 +75,9 @@ VerfLogin();
                     <p class="p_img">
                         <?php
                             if(isset($_SESSION["Usuario"]->img)){
-                                echo '<img src="'.".".str_replace(dirname(__FILE__), "", $_SESSION["Usuario"]->img).'" alt="Avatar">';
+                                echo '<img id="img_perfil" src="'.".".str_replace(dirname(__FILE__), "", $_SESSION["Usuario"]->img).'" alt="Avatar">';
                             }else{
-                                echo '<img src="../../Imagens/icone.ico" alt="Avatar">';
+                                echo '<img id="img_perfil" src="../../Imagens/icone.ico" alt="Avatar">';
                             }
                         ?>
                         <span id="btn_img" onclick="ViewModal();">Editar</span>
@@ -125,7 +125,7 @@ VerfLogin();
 
                         <span class="login-form-title">Imagem</span><br /><br />
                         
-                        <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+                        <input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
 
                         <input type="file" accept="image/*" id="fileuser" name="fileuser" class="input" style="-webkit-text-fill-color: #000; padding: 0;" required>
 
@@ -139,6 +139,15 @@ VerfLogin();
                 </div>
 
             </div>
+            
+            <!-- Modal - Visualizar Imagem -->
+            <div id="ctn_modal2" class="modal-img">
+                    <span class="close">&times;</span>
+                    
+                    <img class="modal-content-img" id="ViuImg">
+                    <div id="caption"></div>
+            </div>
+
 
             <!-- Abas -->
             <div class="scn_abas">
@@ -233,6 +242,19 @@ VerfLogin();
         var modal = document.getElementById("ctn_modal");
         var btn_can = document.getElementById("btn_cancelar");
         var span = document.getElementsByClassName("close")[0];
+        
+        //Modal 2
+        var modal2 = document.getElementById("ctn_modal2");
+        var span2 = document.getElementsByClassName("close")[1];
+        var img = document.getElementById("img_perfil");
+        var modalImg = document.getElementById("ViuImg");
+        var captionText = document.getElementById("caption");
+
+        img.onclick = function(){
+          modal2.style.display = "block";
+          modalImg.src = this.src;
+          captionText.innerHTML = this.alt;
+        }
 
         function ViewModal() {
             modal.style.display = "block";
@@ -241,6 +263,9 @@ VerfLogin();
         //Span close
         span.onclick = function() {
             modal.style.display = "none";
+        }
+        span2.onclick = function() {
+            modal2.style.display = "none";
         }
 
         //Button Cancelar
@@ -252,6 +277,9 @@ VerfLogin();
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
+            }
+            if (event.target == modal) {
+                modal2.style.display = "none";
             }
         }
     </script>

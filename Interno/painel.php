@@ -96,7 +96,7 @@ VerfLogin();
 
                     <span class="login-form-title">Imagem</span><br /><br />
 
-                    <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+                    <input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
 
                     <input type="file" accept="image/*" id="fileuser" name="fileuser" class="input" style="-webkit-text-fill-color: #000; padding: 0;" required>
 
