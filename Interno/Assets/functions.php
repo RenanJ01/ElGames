@@ -37,29 +37,15 @@ function Login($con, $user)
         session_cache_limiter('private');
         $cache_limiter = session_cache_limiter();
 
-        /* define o prazo do cache em 30 minutos * /
+        /* define o prazo do cache em 30 minutos */
         session_cache_expire(30);
-        $cache_expire = session_cache_expire();*/
+        $cache_expire = session_cache_expire();
 
-        $secure = true;
-        $httponly = true;
-        $samesite = 'lax';
-
-        if (PHP_VERSION_ID < 70300) {
-            session_set_cookie_params(0, '/; samesite=' . $samesite, $_SERVER['HTTP_HOST'], $secure, $httponly);
-        } else {
-            session_set_cookie_params([
-                'lifetime' => 0,
-                'path' => '/',
-                'domain' => $_SERVER['HTTP_HOST'],
-                'secure' => $secure,
-                'httponly' => $httponly,
-                'samesite' => $samesite
-            ]);
-        }
+        //session_set_cookie_params(30*60, '/;', $_SERVER['HTTP_HOST'], true, true);
+        $samesite = "lax";
 
         // Se a sessão não existir, inicia uma
-        if (!isset($_SESSION)) session_start();
+        if (!isset($_SESSION)){session_set_cookie_params(30*60, '/; samesite='.$samesite, null, true, true); session_start();}
 
         // Salva os dados encontrados na sessão
         $user->username = $resultado[0]['username_users'];
@@ -86,18 +72,16 @@ function Login($con, $user)
 
 function VerfLogin()
 {
+    $samesite = "lax";
     // A sessão precisa ser iniciada em cada página diferente
     if (!isset($_SESSION)) {
+        session_set_cookie_params(30*60, '/; samesite='.$samesite, null, true, true);
         session_start();
     }
 
     // Verifica se não há a variável da sessão que identifica o usuário
     if (!isset($_SESSION["Usuario"])) {
-        // Destrói a sessão por segurança
-        session_destroy();
-        // Redireciona o visitante de volta pro login
-        header("Location: ..\Access\login.html");
-        exit;
+        Logoff();
     }
 }
 
