@@ -75,7 +75,7 @@ function VerfLogin()
     $samesite = "lax";
     // A sessão precisa ser iniciada em cada página diferente
     if (!isset($_SESSION)) {
-        session_set_cookie_params(30*60, '/; samesite='.$samesite, null, true, true);
+        //session_set_cookie_params(30*60, '/; samesite='.$samesite, null, true, true);
         session_start();
     }
 
