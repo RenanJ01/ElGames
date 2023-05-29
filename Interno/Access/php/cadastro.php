@@ -4,7 +4,7 @@
     require_once("..\\..\\Assets\\functions.php");
     require_once("..\\..\\Assets\\usuario.php");
     
-    VerfLogin();
+    VerfLogin(2);
     $conc = new Conexao();
     $nameErr = $usernameErr = $senhaErr = $genderErr = $idadeErr = "";
     $name = $username = $senha = $gender = $idade = "";

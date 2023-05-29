@@ -4,7 +4,7 @@ require_once("Assets\\functions.php");
 require_once("Assets\\usuario.php");
 
 //Verificar Login
-VerfLogin();
+VerfLogin(0);
 
 ?>
 

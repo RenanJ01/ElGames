@@ -70,7 +70,7 @@ function Login($con, $user)
     }
 }
 
-function VerfLogin()
+function VerfLogin($nivel)
 {
     $samesite = "lax";
     // A sessão precisa ser iniciada em cada página diferente
@@ -81,12 +81,12 @@ function VerfLogin()
 
     // Verifica se não há a variável da sessão que identifica o usuário
     if (!isset($_SESSION["Usuario"])) {
-        Logoff();
+        Logoff($nivel);
     }
 }
 
 //Logoff//
-function Logoff()
+function Logoff($nivel)
 {
     session_start();
     // Apaga todas as variáveis da sessão
@@ -109,7 +109,23 @@ function Logoff()
 
     // Por último, destrói a sessão
     session_destroy();
-    header("Location: ..\Access\login.html");
+    switch ($nivel) {
+        case -1:
+            header("Location: login.html");
+            break;
+        case 0:
+            header("Location: .\Access\login.html");
+            break;
+        case 1:
+            header("Location: ..\Access\login.html");
+            break;
+        case 2:
+            header("Location: ..\..\Access\login.html");
+            break;
+        case 3:
+            header("Location: ..\..\..\Access\login.html");
+            break;
+    }
     exit;
 }
 
@@ -207,3 +223,5 @@ function decryptData($encryptedData, $key)
     $decryptedData = openssl_decrypt($encryptedData, 'aes-256-cbc', $key, OPENSSL_RAW_DATA, $iv);
     return $decryptedData;
 }
+
+?>
