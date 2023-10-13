@@ -1,0 +1,31 @@
+RewriteEngine On
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP:CF-Visitor} !{"scheme":"https"}
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+#Registre os erros do PHP em um registro de erros
+#LOG PHP errors INTO ~/public_html/php_error.log
+
+#não exibir erros para o usuário
+
+php_flag display_startup_errors off
+php_flag display_errors off
+php_flag html_errors off
+
+#registrar no arquivo
+php_flag log_errors on
+php_value error_log ~/Log/php_error.log
+
+#PREVENT DIRECTORY LISTING
+IndexIgnore *
+Options -Indexes
+#END PREVENT DIRECTORY LISTING
+
+Redirect Index https://elgames.rf.gd/Inicio.html
+DirectoryIndex Inicio.html inicio.html
+
+<IfModule mod_headers.c>
+    # Ativar o cabeçalho CSP
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' 'https://cdnjs.cloudflare.com';"
+</IfModule>
