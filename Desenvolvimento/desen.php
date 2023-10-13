@@ -1,5 +1,5 @@
 <?php
-    require_once("..\\Interno\\Assets\\conection.php");
+    require_once("../Interno/Assets/conection.php");
 
     $con = new Conexao();
     $qt_fases = false;

@@ -1,8 +1,8 @@
 <?php
     //Cadastrar
-    require_once("..\\..\\Assets\\conection.php");
-    require_once("..\\..\\Assets\\functions.php");
-    require_once("..\\..\\Assets\\usuario.php");
+    require_once("../../Assets/conection.php");
+    require_once("../../Assets/functions.php");
+    require_once("../../Assets/usuario.php");
     
     VerfLogin(2);
     $conc = new Conexao();
