@@ -31,7 +31,7 @@
         <nav>
             <ul>
                 <div>
-                    <a class="logoBarra" href="../Inicio.html"><img src="../Imagens/ElGames_logo2.png"
+                    <a class="logoBarra" href="../Inicio.html"><img src="../Imagens/ElGames_logo2.jpg"
                             alt="ElGames" height="30"></a>
                 </div>
                 <li><a href="../Inicio.html" target="_self">Inicio</a></li>
@@ -46,7 +46,7 @@
         </nav>
 
         <div class="div_img">
-            <img class="hdr_img" src="Desenvolvimento.png" alt="">
+            <img class="hdr_img" src="Desenvolvimento.jpg" alt="">
         </div>
         <br><br>
     </header>
