@@ -31,7 +31,7 @@
         <nav>
             <ul>
                 <div>
-                    <a class="logoBarra" href="../Inicio.html"><img src="../Imagens/ElGames_logo2.jpg"
+                    <a class="logoBarra" href="../Inicio.html"><img src="../Imagens/ElGames_logo2.webp"
                             alt="ElGames" height="30"></a>
                 </div>
                 <li><a href="../Inicio.html" target="_self">Inicio</a></li>
