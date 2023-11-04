@@ -17,7 +17,7 @@ VerfLogin(0);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="painel.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link rel="shortcut icon" href=".././Imagens/icone.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../Imagens/icone.ico" type="image/x-icon">
     <!-- Load c3.css -->
     <link href="./graph/c3.css" rel="stylesheet">
     <!-- Load d3Interno/painel.css.js and c3.js -->
